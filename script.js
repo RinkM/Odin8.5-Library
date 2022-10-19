@@ -117,19 +117,63 @@ function cardMaker(){
 // All Button Constants
 const addButton = document.getElementById('addButton')
 const editButton = document.getElementById('editButton')
+
 const bookButton = document.getElementById('bookButton')
 const filmButton = document.getElementById('filmButton')
 const gameButton = document.getElementById('gameButton')
 
+const bookSelect = document.getElementById('bookSelect')
+const filmSelect = document.getElementById('filmSelect')
+const gameSelect = document.getElementById('gameSelect')
 
 
-const showForm = ()=>{
- 
-    const bookForm = document.getElementById('bookForm')
-    bookForm.classList.remove("hidden")
+
+const addForm =()=>{
+    const library = document.getElementsByClassName("libraryContainer")[0];
+    library.classList.add('blur')
     
+    const bookForm = document.getElementById('bookForm')
+    bookForm.classList.add("hidden")
+
+    const filmForm = document.getElementById('filmForm')
+    filmForm.classList.add("hidden")
+
+    const gameForm = document.getElementById('gameForm')
+    gameForm.classList.add("hidden")
+
+    const formSelector = document.getElementById('formSelector')
+    formSelector.classList.remove("hidden")
+
 
 }
 
+const hideFormSelector = ()=>{
+    const formSelector = document.getElementById('formSelector');
+    formSelector.classList.add("hidden");
+}
 
-addButton.addEventListener("click",showForm )
+const showBookForm = ()=>{
+    hideFormSelector()
+    const bookForm = document.getElementById('bookForm')
+    bookForm.classList.remove("hidden")
+}
+
+const showFilmForm = ()=>{
+    hideFormSelector()
+    const filmForm = document.getElementById('filmForm');
+    filmForm.classList.remove("hidden");
+}
+
+const showGameForm = ()=>{
+    hideFormSelector()
+    const gameForm = document.getElementById('gameForm')
+    gameForm.classList.remove("hidden")
+    console.log("type 'game'")
+}
+
+
+addButton.addEventListener("click",addForm)
+
+bookSelect.addEventListener("click", showBookForm)
+filmSelect.addEventListener("click", showFilmForm)
+gameSelect.addEventListener("click", showGameForm)

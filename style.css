@@ -154,9 +154,21 @@ nav{display: grid;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: auto;
+    margin: 15px auto;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
 }
 
+#formSelector{
+    display: flex;
+
+    flex-direction: column;
+    padding:5px 0;
+    
+    
+
+}
 
 .formContainer{
     border: 2pt solid black;
@@ -171,8 +183,27 @@ nav{display: grid;
     margin: 7px auto;
 }
 
+#bookSelect:hover{
+    color:#be4e8e;    
+    box-shadow: #be4e8e 0 1px 15px;
+    transition-duration: .1s;
 
-/* 
+
+}
+#filmSelect:hover{
+    color: #f9ee5d;
+    box-shadow: #f9ee5d 0 1px 15px;
+    transition-duration: .1s;
+
+}
+#gameSelect:hover{
+    color: #4ebe7e;
+    box-shadow: #4ebe7e 0 1px 15px;
+    transition-duration: .1s;
+
+}
+
+
 #bookForm{
 background-color: #be4e8e;
 }
@@ -183,14 +214,18 @@ background-color: #f9ee5d;
 
 #gameForm{
     background-color: #4ebe7e;
+}
 
-} */
 .formHeader{
     text-align: center;
     font-size: 24pt;
+    color: black;
+
 
 }
-#formHeaderBook{
+
+
+/* #formHeaderBook{
     color: #dd429a;
 
 }
@@ -201,7 +236,7 @@ background-color: #f9ee5d;
 
 #formHeaderGame{
     color:#4ebe7e
-}
+} */
 
 .addForm{
     display: flex;
@@ -230,16 +265,6 @@ input{
 
 }
 
-
-/* #4ebeb6 */
-
-.inputBook{
-    /* color:#4ebe7e */
-}
-
-.inputFilm{
-    /* color:#be4e8e; */
-}
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color:violet;
     opacity: 1; /* Firefox */
@@ -255,7 +280,12 @@ input{
 
 
 .hidden{
-    display: none;
+    display: none !important;
+}
+
+
+.blur{
+    filter: blur(1px) grayscale(50%) ;
 }
 
 

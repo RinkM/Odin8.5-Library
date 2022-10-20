@@ -1,7 +1,21 @@
 // This is a template for the data:
 let library = {
     "books":[{
-            type:"book",
+            mediaType:"book",
+            bookId:0,
+            title:"The Hobbit",
+            author: "J. R. R. Tolkien",
+            published:"1954",
+            consumedStatus: true,
+            priority:"",
+            review: "",
+            info: function() {
+                const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+                return bookInfo
+            }
+        },
+        {
+            mediaType:"book",
             bookId:0,
             title:"The Hobbit",
             author: "J. R. R. Tolkien",
@@ -17,7 +31,7 @@ let library = {
 
     ],
     "films":[{
-        type:"film",
+        mediaType:"film",
         filmId:"0",
         title:"The Hobbit",
         director: "Peter Jackson",
@@ -31,7 +45,7 @@ let library = {
     },
 ],
 "games":[{
-    type:"game",
+    mediaType:"game",
     gameId:"0",
     title:"The Legend of Zelda : Breath of the Wild",
     developer: "Nintendo",
@@ -77,34 +91,45 @@ function Film (title, minutes, director, consumedStatus){
 }
 
 
-// !I was heree.e.e.e..e.e.e.e.!!!!!
 
-for (item of formData){
-    console.log(item)
-    item.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formInfo = new FormData(this);
-    const entries = formInfo.entries();
-    for (var input of entries) {
-      (userInfo[input[0]] = input[1]);
-    }
-    console.log(userInfo)
-    })
-}
+
+//! library.books.push(submitBook())   adds book to the library 
 
 const addForms = document.getElementsByClassName("addForm");
 
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const entries = formData.entries();
-    for (var input of entries) {
-      (userInfo[input[0]] = input[1]);
-    }
-    console.log(userInfo)
-    if (verify()){alert("Thanks for your interest! We will contact you soon.")}
-    });
+// funtion when form is filled out and submit button pressed.
+function submitForm (formType){
+    let mediaData = {};
+    let formInputs = [];
+    if (formType == "book"){
+        formInputs = Array.from(document.querySelectorAll('#enterBook input'))
+        }
+    else if( formType =="film"){
+        formInputs = Array.from(document.querySelectorAll('#enterFilm input'))
+    }else if( formType =="game"){
+        formInputs = Array.from(document.querySelectorAll('#enterGame input'))
+    }else {
+        console.log("formtype Error")}
+        formInputs.map(inputs => mediaData[inputs.id] = inputs.value);
+        console.log(mediaData)
+    
+    return mediaData
+}
+
+
+
+// ? from Dog Form.     look at verify information....
+// form.addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     const formData = new FormData(this);
+//     const entries = formData.entries();
+//     for (var input of entries) {
+//       (userInfo[input[0]] = input[1]);
+//     }
+//     console.log(userInfo)
+//     if (verify()){alert("Thanks for your interest! We will contact you soon.")}
+//     });
 
 
 
@@ -151,13 +176,15 @@ function cardMaker(){
 const addButton = document.getElementById('addButton')
 const editButton = document.getElementById('editButton')
 
+const bookSelect = document.getElementById('bookSelect')
+const filmSelect = document.getElementById('filmSelect')
+const gameSelect = document.getElementById('gameSelect')
+
 const bookButton = document.getElementById('bookButton')
 const filmButton = document.getElementById('filmButton')
 const gameButton = document.getElementById('gameButton')
 
-const bookSelect = document.getElementById('bookSelect')
-const filmSelect = document.getElementById('filmSelect')
-const gameSelect = document.getElementById('gameSelect')
+
 
 
 
@@ -180,6 +207,9 @@ const addForm =()=>{
 
 }
 
+
+// How do I reduce these?     The button wouldn't let me pass arguments without running)
+
 const hideFormSelector = ()=>{
     const formSelector = document.getElementById('formSelector');
     formSelector.classList.add("hidden");
@@ -201,7 +231,6 @@ const showGameForm = ()=>{
     hideFormSelector()
     const gameForm = document.getElementById('gameForm')
     gameForm.classList.remove("hidden")
-    console.log("type 'game'")
 }
 
 
@@ -211,6 +240,12 @@ bookSelect.addEventListener("click", showBookForm)
 filmSelect.addEventListener("click", showFilmForm)
 gameSelect.addEventListener("click", showGameForm)
 
+bookButton.addEventListener("click", function(){
+    submitForm('book');})
+filmButton.addEventListener("click",function(){
+    submitForm('film');})
+gameButton.addEventListener("click",function(){
+    submitForm('game');})
 
 
 

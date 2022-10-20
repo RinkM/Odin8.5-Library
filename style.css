@@ -162,9 +162,8 @@ nav{display: grid;
 
 #formSelector{
     display: flex;
-
     flex-direction: column;
-    padding:5px 0;
+    padding:10px 0;
     
     
 
@@ -181,6 +180,7 @@ nav{display: grid;
 
 .submitButton{
     margin: 7px auto;
+    width:fit-content
 }
 
 #bookSelect:hover{

@@ -26,6 +26,7 @@
 <body>
 
   <div class = "formSpace">
+    
     <div id = "formSelector" class = "formContainer hidden">
       <div class = formHeader> What will you add?</div>
       <button id = "bookSelect" class = "buttonStyle submitButton">Add Book</button>
@@ -40,30 +41,30 @@
       <form action="" method="post" id = 'enterBook' class = "addForm" >
         <div class = "form-inputs"> 
           <!-- <label for = "title">Title</label> -->
-          <input class = "inputBook" type = "title" id = "title" name = "title" placeholder = "Book Title" >
+          <input class = "inputBook" type = "text" id = "title" name = "title" placeholder = "Book Title" >
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "author">Author</label> -->
-          <input class = "inputBook" type = "author" id = "author" name = "author" placeholder = "Author" >
+          <input class = "inputBook" type = "text" id = "author" name = "author" placeholder = "Author" >
           <div class = "error" id = "authorError"></div>
 
           <!-- <label for = "year">Published Year</label> -->
-          <input class = "inputBook" type = "year" id = "year" name = "year" placeholder = "Year Published" >
+          <input class = "inputBook" type = "text" id = "year" name = "year" placeholder = "Year Published" >
           <div class = "error" id = "yearError"></div>
 
           <!-- <label for = "pages">Page Count</label> -->
-          <input class = "inputBook" type = "pages" id = "pages" name = "pages" placeholder = "Page Count" >
+          <input class = "inputBook" type = "text" id = "pages" name = "pages" placeholder = "Page Count" >
           <div class = "error" id = "pagesError"></div>
 
           <!-- <label for = "review">Review</label> -->
-          <input class = "inputBook" type = "review" id = "review" name = "review" placeholder = "Review" >
+          <input class = "inputBook" type = "text" id = "review" name = "review" placeholder = "Review" >
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "notes">Notes</label> -->
-          <input class = "inputBook" type = "notes" id = "notes" name = "notes" placeholder = "Notes" >
+          <input class = "inputBook" type = "text" id = "notes" name = "notes" placeholder = "Notes" >
           <div class = "error" id = "emailError"></div>
         </div>
-        <button type = 'submit' form ="enterBook" id = "bookButton" class = "buttonStyle submitButton">Add Book</button>
+        <button type = 'button' form ="enterBook" id = "bookButton" class = "buttonStyle submitButton">Add Book</button>
       </form>
     </div>
 
@@ -75,30 +76,30 @@
       <form action="" method="post" id = 'enterFilm' class = "addForm">
         <div class = "form-inputs"> 
           <!-- <label for = "title">Title</label> -->
-          <input class = "inputFilm" type = "title" id = "title" name = "title" placeholder = "Movie Title" >
+          <input class = "inputFilm" type = "text" id = "title" name = "title" placeholder = "Movie Title" >
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "director">Director</label> -->
-          <input class = "inputFilm" type = "director" id = "director" name = "director" placeholder = "Director" >
+          <input class = "inputFilm" type = "text" id = "director" name = "director" placeholder = "Director" >
           <div class = "error" id = "directorError"></div>
 
           <!-- <label for = "year">Released Year</label> -->
-          <input class = "inputFilm" type = "year" id = "year" name = "year" placeholder = "Year Released" >
+          <input class = "inputFilm" type = "text" id = "year" name = "year" placeholder = "Year Released" >
           <div class = "error" id = "yearError"></div>
 
           <!-- <label for = "length">Length (min)</label> -->
-          <input class = "inputFilm" type = "length" id = "length" name = "length" placeholder = "Length (Min)" >
+          <input class = "inputFilm" type = "text" id = "length" name = "length" placeholder = "Length (Min)" >
           <div class = "error" id = "lengthError"></div>
 
           <!-- <label for = "review">Review</label> -->
-          <input class = "inputFilm" type = "review" id = "review" name = "review" placeholder = "Review" >
+          <input class = "inputFilm" type = "text" id = "review" name = "review" placeholder = "Review" >
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "notes">Notes</label> -->
-          <input class = "inputFilm" type = "notes" id = "notes" name = "notes" placeholder = "Notes" >
+          <input class = "inputFilm" type = "text" id = "notes" name = "notes" placeholder = "Notes" >
           <div class = "error" id = "emailError"></div>        
         </div>
-        <button type = 'submit' form ="enterFilm" id = "filmButton" class = "buttonStyle submitButton">Add Film    </button>
+        <button type = 'button' form ="enterFilm" id = "filmButton" class = "buttonStyle submitButton">Add Film    </button>
       </form>
     </div>
 
@@ -112,30 +113,30 @@
 
           
           <!-- <label for = "title">Title</label> -->
-          <input type = "title" id = "title" name = "title" placeholder = "Game Title">
+          <input type = "text" id = "title" name = "title" placeholder = "Game Title">
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "developer">Developer</label -->
-          <input type = "developer" id = "developer" name = "developer" placeholder = "Developer" >
+          <input type = "text" id = "developer" name = "developer" placeholder = "Developer" >
           <div class = "error" id = "developerError"></div>
 
           <!-- <label for = "year">Published Year</label> -->
-          <input type = "year" id = "year" name = "year" placeholder = "Year Released">
+          <input type = "text" id = "year" name = "year" placeholder = "Year Released">
           <div class = "error" id = "yearError"></div>
 
           <input type = "radio" id = "gameCompleted" name = "toggleComplete" >
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "review">Review</label> -->
-          <input type = "review" id = "review" name = "review"placeholder = "Review" >
+          <input type = "text" id = "review" name = "review" placeholder = "Review" >
           <div class = "error" id = "emailError"></div>
 
-          <input type = "notes" id = "notes" name = "notes" placeholder = "Notes" >
+          <input type = "text" id = "notes" name = "notes" placeholder = "Notes" >
           <div class = "error" id = "emailError"></div>
 
           
         </div>
-        <button type = 'submit' form ="enterGame" id = "gameButton" class = "buttonStyle submitButton">Add Game</button>
+        <button type = 'button' form ="enterGame" id = "gameButton" class = "buttonStyle submitButton">Add Game</button>
       </form>
     </div>
 

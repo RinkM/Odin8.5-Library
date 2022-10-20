@@ -77,6 +77,39 @@ function Film (title, minutes, director, consumedStatus){
 }
 
 
+// !I was heree.e.e.e..e.e.e.e.!!!!!
+
+for (item of formData){
+    console.log(item)
+    item.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formInfo = new FormData(this);
+    const entries = formInfo.entries();
+    for (var input of entries) {
+      (userInfo[input[0]] = input[1]);
+    }
+    console.log(userInfo)
+    })
+}
+
+const addForms = document.getElementsByClassName("addForm");
+
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const entries = formData.entries();
+    for (var input of entries) {
+      (userInfo[input[0]] = input[1]);
+    }
+    console.log(userInfo)
+    if (verify()){alert("Thanks for your interest! We will contact you soon.")}
+    });
+
+
+
+
+
 function cardMaker(){
 
     const mediaCard = document.createElement("div")
@@ -177,3 +210,11 @@ addButton.addEventListener("click",addForm)
 bookSelect.addEventListener("click", showBookForm)
 filmSelect.addEventListener("click", showFilmForm)
 gameSelect.addEventListener("click", showGameForm)
+
+
+
+
+
+
+// make function tto add to library. 
+// make function 

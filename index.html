@@ -33,14 +33,11 @@
       <button id = "gameSelect" class = "buttonStyle submitButton">Add Game</button>
     </div>
 
-
-
-
     <div id = "bookForm" class = "hidden formContainer">
       <div id = "formHeaderBook" class ="formHeader">
         Enter a Book
       </div>
-      <form action="" method="post" class = "addForm" >
+      <form action="" method="post" id = 'enterBook' class = "addForm" >
         <div class = "form-inputs"> 
           <!-- <label for = "title">Title</label> -->
           <input class = "inputBook" type = "title" id = "title" name = "title" placeholder = "Book Title" >
@@ -66,7 +63,7 @@
           <input class = "inputBook" type = "notes" id = "notes" name = "notes" placeholder = "Notes" >
           <div class = "error" id = "emailError"></div>
         </div>
-        <button id = "bookButton" class = "buttonStyle submitButton">Add Book</button>
+        <button type = 'submit' form ="enterBook" id = "bookButton" class = "buttonStyle submitButton">Add Book</button>
       </form>
     </div>
 
@@ -75,7 +72,7 @@
       <div id = "formHeaderFilm" class ="formHeader">
         Enter a Film
       </div>
-      <form action="" method="post" class = "addForm">
+      <form action="" method="post" id = 'enterFilm' class = "addForm">
         <div class = "form-inputs"> 
           <!-- <label for = "title">Title</label> -->
           <input class = "inputFilm" type = "title" id = "title" name = "title" placeholder = "Movie Title" >
@@ -101,7 +98,7 @@
           <input class = "inputFilm" type = "notes" id = "notes" name = "notes" placeholder = "Notes" >
           <div class = "error" id = "emailError"></div>        
         </div>
-        <button id = "filmButton" class = "buttonStyle submitButton">Add Film    </button>
+        <button type = 'submit' form ="enterFilm" id = "filmButton" class = "buttonStyle submitButton">Add Film    </button>
       </form>
     </div>
 
@@ -110,7 +107,7 @@
       <div id = "formHeaderGame" class ="formHeader">
         Enter a Game
       </div>
-      <form action="" method="post" class = "addForm">
+      <form action="" method="post" id = 'enterGame' class = "addForm">
         <div class = "form-inputs"> 
 
           
@@ -138,7 +135,7 @@
 
           
         </div>
-        <button id = "gameButton" class = "buttonStyle submitButton">Add Game</button>
+        <button type = 'submit' form ="enterGame" id = "gameButton" class = "buttonStyle submitButton">Add Game</button>
       </form>
     </div>
 
@@ -151,7 +148,7 @@
       
 
       <h1 class = "title">The Lord of the Rings</h1>
-      <div class = "consumedStatus">Seen It</div>
+      <div class = "consumedStatus">Finished</div>
       <div class = 'author'>Tolkien</div>
       <div class = "published">1954</div>
       <div class = "pages"><span>654</span> pages</div>
@@ -162,7 +159,7 @@
     </div>
       
     <div class = "mediaContainer">
-      <div class = "consumedStatus">Seen It</div>
+      <div class = "consumedStatus">Finished</div>
       
 
       <h1 class = "title">The Lord of the Rings</h1>

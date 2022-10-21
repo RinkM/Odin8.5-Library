@@ -1,65 +1,63 @@
-// This is a template for the data:
-let library = {
-    "books":[{
-            mediaType:"book",
-            bookId:0,
-            title:"The Hobbit",
-            author: "J. R. R. Tolkien",
-            published:"1954",
-            consumedStatus: true,
-            priority:"",
-            review: "",
-            info: function() {
-                const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
-                return bookInfo
-            }
-        },
-        {
-            mediaType:"book",
-            bookId:0,
-            title:"The Hobbit",
-            author: "J. R. R. Tolkien",
-            published:"1954",
-            consumedStatus: true,
-            priority:"",
-            review: "",
-            info: function() {
-                const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
-                return bookInfo
-            }
-        },
 
-    ],
-    "films":[{
-        mediaType:"film",
-        filmId:"0",
-        title:"The Hobbit",
-        director: "Peter Jackson",
-        released:"2014",
-        consumedStatus: false,
 
-        info : function() {
-            const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.consumedStatus}`;
-            return filmInfo
-        },
-    },
-],
-"games":[{
-    mediaType:"game",
-    gameId:"0",
-    title:"The Legend of Zelda : Breath of the Wild",
-    developer: "Nintendo",
-    released:"2018",
-    consumedStatus: false,
-    
+library = [{
+    mediaType:"book",
+    itemId:0,
+    title:"The Hobbit",
+    author: "J. R. R. Tolkien",
+    year:"1954",
+    finished: true,
+    review: "",
+    info: function() {
+        const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+        return bookInfo
+    }
+}, 
+{
+    mediaType:"book",
+    itemId:1,
+    title:"The Hobbit",
+    author: "J. R. R. Tolkien",
+    year:"1954",
+    finished: true,
+    review: "",
+    info: function() {
+        const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+        return bookInfo
+    }
+},
+{
+    mediaType:"film",
+    itemId:2,
+    title:"The Hobbit",
+    author: "Peter Jackson",
+    year:"2012",
+    finished: true,
+    review:"",
+    notes:"",
 
     info : function() {
         const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.consumedStatus}`;
         return filmInfo
-    },
+    }
 },
-],
+{
+    mediaType:"game",
+    itemId:3,
+    title:"The Legend of Zelda : Breath of the Wild",
+    author: "Nintendo",
+    year:"2017",
+    finished: false,
+    review:"",
+    notes:"",
+    info : function() {
+        const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.consumedStatus}`;
+        return filmInfo
+    },
 }
+
+]
+
 
 
 
@@ -91,10 +89,6 @@ function Film (title, minutes, director, consumedStatus){
 }
 
 
-
-
-//! library.books.push(submitBook())   adds book to the library 
-
 const addForms = document.getElementsByClassName("addForm");
 
 
@@ -102,6 +96,7 @@ const addForms = document.getElementsByClassName("addForm");
 function submitForm (formType){
     let mediaData = {};
     let formInputs = [];
+    
     if (formType == "book"){
         formInputs = Array.from(document.querySelectorAll('#enterBook input'))
         }
@@ -110,10 +105,16 @@ function submitForm (formType){
     }else if( formType =="game"){
         formInputs = Array.from(document.querySelectorAll('#enterGame input'))
     }else {
-        console.log("formtype Error")}
-        formInputs.map(inputs => mediaData[inputs.id] = inputs.value);
-        console.log(mediaData)
+        console.log("formtype Error")};
+    mediaData['itemId'] = library.length +1
+    formInputs.map(inputs => mediaData[inputs.id] = inputs.value);
+    console.log(mediaData);
+    library.push(mediaData);
+    returnScreen();
+    resetCards()
+    cardMaker();
     
+
     return mediaData
 }
 
@@ -133,43 +134,69 @@ function submitForm (formType){
 
 
 
-
-
 function cardMaker(){
-
+  library.map(object=> {
     const mediaCard = document.createElement("div")
     // mediaCard.setAttribute("id", )
     mediaCard.classList.add("mediaContainer");
-    const consumed = document.createElement("div");
-    consumed.classList.add("consumedStatus");
+    const finished = document.createElement("div");
+    finished.classList.add("finishedStatus");
+    
+    if(object.mediaType == 'book'){
+      mediaCard.classList.add("bookBackground")
 
+    }else if(object.mediaType == 'film') {
+      mediaCard.classList.add("filmBackground")
+      
+    }else if (object.mediaType == 'game'){
+      mediaCard.classList.add("gameBackground")
+    }
+    
     const itemTitle = document.createElement("h1");
     itemTitle.classList.add("title");
+    itemTitle.textContent = `${object.title}`;
+
     const itemAuthor = document.createElement("div");
     itemAuthor.classList.add("author");
-    const itemPublished = document.createElement("div");
-    itemPublished.classList.add("published");
-    const itemPages = document.createElement("div");
-    itemPages.classList.add("pages");
+    itemAuthor.textContent = `${object.author}`;
+
+    const itemYear = document.createElement("div");
+    itemYear.classList.add("year");
+    itemYear.textContent = `${object.year}`;
+
+    // const itemPages = document.createElement("div");
+    // itemPages.classList.add("pages");
+    // itemTitle.textContent(`${object.title}`);
+
     const itemReview = document.createElement("div");
     itemReview.classList.add("review");
+    itemReview.textContent = `${object.review}`;
+
     const itemNotes = document.createElement("div");
     itemNotes.classList.add("notes");
+    itemNotes.textContent = `${object.notes}`;
 
-
-
-    mediaCard.appendChild(consumed);
+    mediaCard.appendChild(finished);
     mediaCard.appendChild(itemTitle);
     mediaCard.appendChild(itemAuthor);
-    mediaCard.appendChild(itemPublished);
-    mediaCard.appendChild(itemPages);
+    mediaCard.appendChild(itemYear);
     mediaCard.appendChild(itemReview);
     mediaCard.appendChild(itemNotes);
 
     const library = document.getElementsByClassName("libraryContainer")[0];
     library.appendChild(mediaCard)
-    
+  })
+
+
 }
+
+
+function resetCards(){
+  const library = document.getElementsByClassName("libraryContainer")[0];
+    library.innerHTML = "";
+
+}
+
 
 
 // All Button Constants
@@ -187,6 +214,25 @@ const gameButton = document.getElementById('gameButton')
 
 
 
+
+const returnScreen =()=>{
+  const library = document.getElementsByClassName("libraryContainer")[0];
+  library.classList.remove('blur')
+  
+  const bookForm = document.getElementById('bookForm')
+  bookForm.classList.add("hidden")
+
+  const filmForm = document.getElementById('filmForm')
+  filmForm.classList.add("hidden")
+
+  const gameForm = document.getElementById('gameForm')
+  gameForm.classList.add("hidden")
+
+  const formSelector = document.getElementById('formSelector')
+  formSelector.classList.add("hidden")
+
+
+}
 
 const addForm =()=>{
     const library = document.getElementsByClassName("libraryContainer")[0];
@@ -251,5 +297,5 @@ gameButton.addEventListener("click",function(){
 
 
 
-// make function tto add to library. 
-// make function 
+
+cardMaker()

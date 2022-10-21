@@ -27,6 +27,8 @@ div{
 .libraryContainer{
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
 }
 
 
@@ -37,8 +39,8 @@ div{
     padding: 5px;
     border-radius: 15px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width:30%;
-    background-image: linear-gradient(92.88deg,  #673FD7,  #455EB5);
+    width:350px;
+    /* background-image: linear-gradient(92.88deg,  #673FD7,  #455EB5); */
     border:2px solid black;
     
     /* background-image: linear-gradient(92.88deg, #f33fd8,  #673FD7); */
@@ -119,6 +121,7 @@ nav{display: grid;
       text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
       transition: all .5s;
       user-select: none;
+      width:auto;
       -webkit-user-select: none;
       touch-action: manipulation;
     }
@@ -130,8 +133,10 @@ nav{display: grid;
 
 @media only screen and (max-width:820px)  {
     .buttonStyle {
-    padding: 0 2.6rem;
+
     font-size: 1.5rem;
+    height: 3rem;
+
     }
     .navLeft{
     }
@@ -171,7 +176,7 @@ nav{display: grid;
 
 .formContainer{
     border: 2pt solid black;
-    width: 25%;
+    width: 300px;
     border-radius: 20%;
     margin:10px;
     background-color: #455EB5;
@@ -216,15 +221,38 @@ background-color: #f9ee5d;
     background-color: #4ebe7e;
 }
 
+.bookBackground{
+background-color: #be4e8e;
+}
+    
+.filmBackground{
+background-color: #f9ee5d;
+}
+    
+.gameBackground{
+    background-color: #4ebe7e;
+}
+    
+
+
 .formHeader{
     text-align: center;
-    font-size: 24pt;
+    font-size: 2rem;
     color: black;
+}
+
+.finishedContainer{
+    display: flex;
+    font-size: 1.5rem;
 
 
 }
+#finished{
+    width:1.5rem;
+    height:auto;
+    margin-left: 5px;
 
-
+}
 /* #formHeaderBook{
     color: #dd429a;
 
@@ -285,7 +313,7 @@ input{
 
 
 .blur{
-    filter: blur(1px) grayscale(50%) ;
+    filter: blur(4px) ;
 }
 
 

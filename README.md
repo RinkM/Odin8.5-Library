@@ -11,7 +11,23 @@ Read + Review + Recommendation ?
 
 Wishlist Reading.
 
+## Notes from 10/20
+got the form to work and submit
+got the card to get drawn
+need to set up form verification.  at least for years and blank spots
+
+the check box doesn't work.    why not?
+edit a card - allow you tto touch and select a card?
+how?
+
+Sort should be easy.    pull down menu?   radio buttons?
+
+still need to fix formatting for cards. and finished status. 
+
+
+
 ## Notes from 10/18
+
 Overall, did things from 10/17 notese.   added blur, centered form, added forms, toggl through thee first form and move into the second.
 
 Things to do now : 

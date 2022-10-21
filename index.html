@@ -40,6 +40,8 @@
       </div>
       <form action="" method="post" id = 'enterBook' class = "addForm" >
         <div class = "form-inputs"> 
+
+          <input type="hidden" id="mediaType" name="mediaType" value="book" />
           <!-- <label for = "title">Title</label> -->
           <input class = "inputBook" type = "text" id = "title" name = "title" placeholder = "Book Title" >
           <div class = "error" id = "emailError"></div>
@@ -52,9 +54,10 @@
           <input class = "inputBook" type = "text" id = "year" name = "year" placeholder = "Year Published" >
           <div class = "error" id = "yearError"></div>
 
-          <!-- <label for = "pages">Page Count</label> -->
-          <input class = "inputBook" type = "text" id = "pages" name = "pages" placeholder = "Page Count" >
-          <div class = "error" id = "pagesError"></div>
+          <div class = "finishedContainer">
+            <label for = "finished">Finished? </label>
+            <input type = "checkbox" id = "finished" name = "finished" value = "false" >
+          </div>
 
           <!-- <label for = "review">Review</label> -->
           <input class = "inputBook" type = "text" id = "review" name = "review" placeholder = "Review" >
@@ -75,6 +78,7 @@
       </div>
       <form action="" method="post" id = 'enterFilm' class = "addForm">
         <div class = "form-inputs"> 
+          <input type="hidden" id="mediaType" name="mediaType" value="film" />
           <!-- <label for = "title">Title</label> -->
           <input class = "inputFilm" type = "text" id = "title" name = "title" placeholder = "Movie Title" >
           <div class = "error" id = "emailError"></div>
@@ -87,9 +91,10 @@
           <input class = "inputFilm" type = "text" id = "year" name = "year" placeholder = "Year Released" >
           <div class = "error" id = "yearError"></div>
 
-          <!-- <label for = "length">Length (min)</label> -->
-          <input class = "inputFilm" type = "text" id = "length" name = "length" placeholder = "Length (Min)" >
-          <div class = "error" id = "lengthError"></div>
+          <div class = "finishedContainer">
+            <label for = "finished">Finished? </label>
+            <input type = "checkbox" id = "finished" name = "finished" >
+          </div>
 
           <!-- <label for = "review">Review</label> -->
           <input class = "inputFilm" type = "text" id = "review" name = "review" placeholder = "Review" >
@@ -110,6 +115,7 @@
       </div>
       <form action="" method="post" id = 'enterGame' class = "addForm">
         <div class = "form-inputs"> 
+          <input type="hidden" id="mediaType" name="mediaType" value="game" />
 
           
           <!-- <label for = "title">Title</label> -->
@@ -124,8 +130,10 @@
           <input type = "text" id = "year" name = "year" placeholder = "Year Released">
           <div class = "error" id = "yearError"></div>
 
-          <input type = "radio" id = "gameCompleted" name = "toggleComplete" >
-          <div class = "error" id = "emailError"></div>
+          <div class = "finishedContainer">
+            <label for = "finished">Finished? </label>
+            <input type = "checkbox" id = "finished" name = "finished" >
+          </div>
 
           <!-- <label for = "review">Review</label> -->
           <input type = "text" id = "review" name = "review" placeholder = "Review" >
@@ -146,8 +154,6 @@
   <div class = "libraryContainer">
     <div class = "mediaContainer">
       
-      
-
       <h1 class = "title">The Lord of the Rings</h1>
       <div class = "consumedStatus">Finished</div>
       <div class = 'author'>Tolkien</div>
@@ -155,8 +161,6 @@
       <div class = "pages"><span>654</span> pages</div>
       <div class = "review"><span>5</span> stars</div>
       <div class = 'notes'>Notes: I thought this book was long. </div>
-
-
     </div>
       
     <div class = "mediaContainer">
@@ -169,17 +173,8 @@
       <div class = "pages"><span>654</span> pages</div>
       <div class = "review"><span>5</span> stars</div>
       <div class = 'notes'>Notes: I thought this book was long. </div>
-
-
     </div>
   </div>
-
-    Sup
-
-
-
-
-
 
 </body>
 

@@ -41,7 +41,7 @@
       <form action="" method="post" id = 'enterBook' class = "addForm" >
         <div class = "form-inputs"> 
 
-          <input type="hidden" id="mediaType" name="mediaType" value="book" />
+          <input  class = "inputBook" type="hidden" id="mediaType" name="mediaType" value="book" />
           <!-- <label for = "title">Title</label> -->
           <input class = "inputBook" type = "text" id = "title" name = "title" placeholder = "Book Title" >
           <div class = "error" id = "emailError"></div>
@@ -56,7 +56,7 @@
 
           <div class = "finishedContainer">
             <label for = "finished">Finished? </label>
-            <input type = "checkbox" id = "finished" name = "finished" value = "false" >
+            <input class ='checkbox' type = "checkbox" id = "checkboxBook" name = "finished" value = "false" >
           </div>
 
           <!-- <label for = "review">Review</label> -->
@@ -78,7 +78,7 @@
       </div>
       <form action="" method="post" id = 'enterFilm' class = "addForm">
         <div class = "form-inputs"> 
-          <input type="hidden" id="mediaType" name="mediaType" value="film" />
+          <input class = "inputFilm" type="hidden" id="mediaType" name="mediaType" value="film" />
           <!-- <label for = "title">Title</label> -->
           <input class = "inputFilm" type = "text" id = "title" name = "title" placeholder = "Movie Title" >
           <div class = "error" id = "emailError"></div>
@@ -93,7 +93,7 @@
 
           <div class = "finishedContainer">
             <label for = "finished">Finished? </label>
-            <input type = "checkbox" id = "finished" name = "finished" >
+            <input class = "checkbox" type = "checkbox" id = "checkboxFilm" name = "finished" >
           </div>
 
           <!-- <label for = "review">Review</label> -->
@@ -115,31 +115,31 @@
       </div>
       <form action="" method="post" id = 'enterGame' class = "addForm">
         <div class = "form-inputs"> 
-          <input type="hidden" id="mediaType" name="mediaType" value="game" />
+          <input class = "inputGame" type="hidden" id="mediaType" name="mediaType" value="game" />
 
           
           <!-- <label for = "title">Title</label> -->
-          <input type = "text" id = "title" name = "title" placeholder = "Game Title">
+          <input class = "inputGame"  type = "text" id = "title" name = "title" placeholder = "Game Title">
           <div class = "error" id = "emailError"></div>
 
           <!-- <label for = "developer">Developer</label -->
-          <input type = "text" id = "developer" name = "developer" placeholder = "Developer" >
+          <input class = "inputGame"  type = "text" id = "developer" name = "developer" placeholder = "Developer" >
           <div class = "error" id = "developerError"></div>
 
           <!-- <label for = "year">Published Year</label> -->
-          <input type = "text" id = "year" name = "year" placeholder = "Year Released">
+          <input class = "inputGame"  type = "text" id = "year" name = "year" placeholder = "Year Released">
           <div class = "error" id = "yearError"></div>
 
           <div class = "finishedContainer">
             <label for = "finished">Finished? </label>
-            <input type = "checkbox" id = "finished" name = "finished" >
+            <input class = "checkbox"  type = "checkbox" id = "checkboxGame" name = "finished" >
           </div>
 
           <!-- <label for = "review">Review</label> -->
-          <input type = "text" id = "review" name = "review" placeholder = "Review" >
+          <input class = "inputGame"  type = "text" id = "review" name = "review" placeholder = "Review" >
           <div class = "error" id = "emailError"></div>
 
-          <input type = "text" id = "notes" name = "notes" placeholder = "Notes" >
+          <input class = "inputGame"  type = "text" id = "notes" name = "notes" placeholder = "Notes" >
           <div class = "error" id = "emailError"></div>
 
           
@@ -152,28 +152,8 @@
 
 
   <div class = "libraryContainer">
-    <div class = "mediaContainer">
-      
-      <h1 class = "title">The Lord of the Rings</h1>
-      <div class = "consumedStatus">Finished</div>
-      <div class = 'author'>Tolkien</div>
-      <div class = "published">1954</div>
-      <div class = "pages"><span>654</span> pages</div>
-      <div class = "review"><span>5</span> stars</div>
-      <div class = 'notes'>Notes: I thought this book was long. </div>
-    </div>
-      
-    <div class = "mediaContainer">
-      <div class = "consumedStatus">Finished</div>
-      
 
-      <h1 class = "title">The Lord of the Rings</h1>
-      <div class = 'author'>Tolkien</div>
-      <div class = "published">1954</div>
-      <div class = "pages"><span>654</span> pages</div>
-      <div class = "review"><span>5</span> stars</div>
-      <div class = 'notes'>Notes: I thought this book was long. </div>
-    </div>
+
   </div>
 
 </body>

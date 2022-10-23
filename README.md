@@ -1,4 +1,47 @@
 # Odin8.5-Library
+
+
+## notes from 10/22
+
+  library.splice(bookObject, 1)
+
+  got checkbox working
+  got escape key to work.   
+  enter key doesn't work yet...  can I have 'enter' always work, but if then if the form container is visible?   doees same as submit when visible?
+
+
+  verification doesn't work yet either....
+
+  changed the libary to add items with consturctor function.   New Book.
+
+found google API and thought about using it.  how??????????
+
+  To do:
+  verification
+  layout + formatting
+  how to reemove an item.
+  let bookObject = library.findIndex(x => x.id === bookID)  will this help?
+
+
+   
+
+Inspiration: 
+https://enplace.github.io/top-library/
+Uses a search bar. as you type, it filters the titles
+Uses Google APi for books.
+
+https://theonlyhamstertoh.github.io/libraryProject/
+
+
+    https://codepen.io/lsirivong/pen/nRNLYL
+    ratings 
+
+
+    https://austintirrell.github.io/library/
+    simple style
+
+
+
 A library to keep track of books and movies.
 
 
@@ -16,13 +59,15 @@ got the form to work and submit
 got the card to get drawn
 need to set up form verification.  at least for years and blank spots
 
-the check box doesn't work.    why not?
+the check box doesn't work.    why not?   bookRead.checked?
 edit a card - allow you tto touch and select a card?
 how?
 
 Sort should be easy.    pull down menu?   radio buttons?
 
 still need to fix formatting for cards. and finished status. 
+how to escape adding a card.   clicking out.   X buutton?   
+
 
 
 

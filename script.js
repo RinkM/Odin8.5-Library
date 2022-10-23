@@ -1,6 +1,7 @@
+let items = 5
 
 
-library = [{
+let library = [{
     mediaType:"book",
     itemId:0,
     title:"The Hobbit",
@@ -9,7 +10,7 @@ library = [{
     finished: true,
     review: "",
     info: function() {
-        const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+        const bookInfo = `${this.title} by ${this.author}. Released in ${this.year}. Read? ${this.finished}`;
         return bookInfo
     }
 }, 
@@ -18,11 +19,11 @@ library = [{
     itemId:1,
     title:"The Hobbit",
     author: "J. R. R. Tolkien",
-    year:"1954",
+    year:"1937",
     finished: true,
     review: "",
     info: function() {
-        const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+        const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.finished}`;
         return bookInfo
     }
 },
@@ -37,7 +38,7 @@ library = [{
     notes:"",
 
     info : function() {
-        const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.consumedStatus}`;
+        const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.finished}`;
         return filmInfo
     }
 },
@@ -51,43 +52,42 @@ library = [{
     review:"",
     notes:"",
     info : function() {
-        const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.consumedStatus}`;
-        return filmInfo
-    },
+        const gameInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Played? ${this.finished}`;
+        return gameInfo
+    }
+},
+{
+  
+  mediaType: "book",
+  itemId: 4,
+  title: "Hyperion",
+  author: "Dan Simmons",
+  year: "1989`",
+  finished: "false",
+  review: "It was good",
+  notes: "I liked it.",
+  info : function() {
+    const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.finished}`;
+    return filmInfo
+  }
 }
-
 ]
 
 
-
-
-
-
-
-function Book (title, author, pages, consumedStatus){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.consumedStatus = consumedStatus;
-    this.info = function() {
-        const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
-        return bookInfo
-    
-    }
+function Book (mediaType, itemId, title, creator, year, finished, review, notes){
+  this.mediaType = mediaType;
+  this.itemId = itemId;
+  this.title = title;
+  this.creator = creator;
+  this.year = year;
+  this.finished = finished;
+  this.review = review;
+  this.notes = notes;
+  this.info = function() {
+      const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+      return bookInfo
+  }
 }
-
-function Film (title, minutes, director, consumedStatus){
-    this.title = title;
-    this.minutes = minutes;
-    this.director = director;
-    this.consumedStatus = consumedStatus;
-    this.info = function() {
-        const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.consumedStatus}`;
-        return filmInfo
-    }
-
-}
-
 
 const addForms = document.getElementsByClassName("addForm");
 
@@ -96,26 +96,46 @@ const addForms = document.getElementsByClassName("addForm");
 function submitForm (formType){
     let mediaData = {};
     let formInputs = [];
-    
+    let checkbox;
+    // pulls the input data from forms.  
     if (formType == "book"){
-        formInputs = Array.from(document.querySelectorAll('#enterBook input'))
-        }
-    else if( formType =="film"){
-        formInputs = Array.from(document.querySelectorAll('#enterFilm input'))
-    }else if( formType =="game"){
-        formInputs = Array.from(document.querySelectorAll('#enterGame input'))
-    }else {
-        console.log("formtype Error")};
-    mediaData['itemId'] = library.length +1
-    formInputs.map(inputs => mediaData[inputs.id] = inputs.value);
-    console.log(mediaData);
-    library.push(mediaData);
-    returnScreen();
-    resetCards()
-    cardMaker();
-    
+      checkbox = document.getElementById('checkboxBook')
+      formInputs = Array.from(document.querySelectorAll('.inputBook'))
+      }
+      else if( formType =="film"){
+        checkbox = document.getElementById('checkboxFilm');
+        formInputs = Array.from(document.querySelectorAll('.inputFilm'))
 
-    return mediaData
+      }else if( formType =="game"){
+        checkbox = document.getElementById('checkboxGame');
+        formInputs = Array.from(document.querySelectorAll('.inputGame'))
+      }else {
+        console.log("formtype Error")};
+
+    // mediaData['itemId'] = items;
+    // mediaData['finished'] = checkbox.checked
+
+    formInputs.map(inputs => mediaData[inputs.id] = inputs.value);
+
+    library[library.length] = new Book (
+      mediaData.mediaType,
+      items,
+      mediaData.title,
+      mediaData.author,
+      mediaData.year,
+      checkbox.checked,
+      mediaData.review,
+      mediaData.notes,
+    )
+    items++;
+
+    console.log(mediaData);
+    // library.push(mediaData);
+    returnScreen();
+    resetCards();
+    cardMaker();
+
+
 }
 
 
@@ -137,8 +157,9 @@ function submitForm (formType){
 function cardMaker(){
   library.map(object=> {
     const mediaCard = document.createElement("div")
-    // mediaCard.setAttribute("id", )
-    mediaCard.classList.add("mediaContainer");
+    mediaCard.classList.add("mediaContainer")
+    mediaCard.id = `card${object.itemId}`
+
     const finished = document.createElement("div");
     finished.classList.add("finishedStatus");
     
@@ -164,10 +185,6 @@ function cardMaker(){
     itemYear.classList.add("year");
     itemYear.textContent = `${object.year}`;
 
-    // const itemPages = document.createElement("div");
-    // itemPages.classList.add("pages");
-    // itemTitle.textContent(`${object.title}`);
-
     const itemReview = document.createElement("div");
     itemReview.classList.add("review");
     itemReview.textContent = `${object.review}`;
@@ -183,8 +200,10 @@ function cardMaker(){
     mediaCard.appendChild(itemReview);
     mediaCard.appendChild(itemNotes);
 
-    const library = document.getElementsByClassName("libraryContainer")[0];
-    library.appendChild(mediaCard)
+    const libraryDiv = document.getElementsByClassName("libraryContainer")[0];
+    libraryDiv.appendChild(mediaCard)
+    
+
   })
 
 
@@ -230,8 +249,6 @@ const returnScreen =()=>{
 
   const formSelector = document.getElementById('formSelector')
   formSelector.classList.add("hidden")
-
-
 }
 
 const addForm =()=>{
@@ -256,44 +273,74 @@ const addForm =()=>{
 
 // How do I reduce these?     The button wouldn't let me pass arguments without running)
 
-const hideFormSelector = ()=>{
-    const formSelector = document.getElementById('formSelector');
-    formSelector.classList.add("hidden");
+const hideDiv = (divId)=>{
+  const hiddenDiv = document.getElementById(divId);
+  hiddenDiv.classList.add("hidden");
 }
 
-const showBookForm = ()=>{
-    hideFormSelector()
-    const bookForm = document.getElementById('bookForm')
-    bookForm.classList.remove("hidden")
-}
-
-const showFilmForm = ()=>{
-    hideFormSelector()
-    const filmForm = document.getElementById('filmForm');
-    filmForm.classList.remove("hidden");
-}
-
-const showGameForm = ()=>{
-    hideFormSelector()
-    const gameForm = document.getElementById('gameForm')
-    gameForm.classList.remove("hidden")
+const showDiv = (divId)=>{
+  // hideFormSelector()
+  const visibleDiv = document.getElementById(divId)
+  visibleDiv.classList.remove("hidden")
 }
 
 
+
+// Button Functions
 addButton.addEventListener("click",addForm)
 
-bookSelect.addEventListener("click", showBookForm)
-filmSelect.addEventListener("click", showFilmForm)
-gameSelect.addEventListener("click", showGameForm)
+bookSelect.addEventListener("click", function(){
+  showDiv('bookForm');
+  hideDiv('formSelector')
+})
+filmSelect.addEventListener("click", function(){
+  showDiv("filmForm");
+  hideDiv('formSelector')
+})
+gameSelect.addEventListener("click", function(){
+  showDiv("gameForm");
+  hideDiv('formSelector')
+})
 
 bookButton.addEventListener("click", function(){
-    submitForm('book');})
+    submitForm('book');
+})
 filmButton.addEventListener("click",function(){
-    submitForm('film');})
+    submitForm('film');
+})
 gameButton.addEventListener("click",function(){
-    submitForm('game');})
+    submitForm('game');
+})
 
 
+const handleKeyboardInput = (e) => {
+  // console.log(e)
+  if (e.key == "Escape") {
+    returnScreen()
+    
+    // hideDiv('formSelector')
+    // hideDiv("gameForm");
+    // hideDiv("filmForm");
+    // hideDiv('bookForm');
+
+  } else if (e.key == "Enter"){
+
+  }
+
+
+
+  // if ((e.key >= 0 && e.key <= 9) || e.key == ".") {buttonNumber(e.key);
+  // } else if (e.key == "=" || e.key == "Enter") {buttonEquals();
+  // } else if (e.key == "Escape") {buttonClear();
+  // } else if (e.key == "*"){buttonOperation("x");
+  // } else if (e.key == "+" || e.key == "-" || e.key == "x" || e.key == "/") {{buttonOperation(e.key);}
+  // }
+  
+  // if (e.key == "Backspace") deleteOne();
+};
+
+
+window.addEventListener("keydown", handleKeyboardInput)
 
 
 

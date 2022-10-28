@@ -26,7 +26,7 @@ div{
 
 .libraryContainer{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
 }
@@ -37,17 +37,18 @@ div{
 .mediaContainer{
     margin: 10px;
     padding: 5px;
-    border-radius: 15px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width:350px;
-    /* background-image: linear-gradient(92.88deg,  #673FD7,  #455EB5); */
-    border:2px solid black;
+    width:225px;
+    height: 150px;
     
-    /* background-image: linear-gradient(92.88deg, #f33fd8,  #673FD7); */
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 4px;
-
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+
+.legend{
+    margin-left: 15px;
+    padding-inline: 10px;
+}
 
 .consumedStatus{
     width:fit-content;
@@ -58,6 +59,8 @@ div{
 .title{
     margin: 0px;
 }
+
+
 
 
 .parent {
@@ -82,9 +85,11 @@ nav{
     /* top:0px; */
     background-image: linear-gradient(92.88deg,  #673FD7,  #455EB5);
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 110px;
+    grid-template-rows: 6em;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    box-shadow: #291855 0 2px 15px;
+
 }
 .navLeft{
     grid-area: 1 / 1 / 2 / 2;
@@ -92,7 +97,7 @@ nav{
     align-self: center;
     margin:0px 10px;
     
-    font-size: 3rem;
+    font-size: 3em;
     font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     color:#FFFFFF;
 
@@ -121,11 +126,11 @@ nav{
       cursor: pointer;
       flex-shrink: 0;   
       font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-      font-size: 2rem;
+      font-size: 2em;
       font-weight: 500;
-      height: 4rem;
+      height: 2em;
       margin: 0px 5px;
-      padding: 0 1.6rem;
+      padding: 0 1.6em;
       text-align: center;
       text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
       transition: all .5s;
@@ -140,14 +145,22 @@ nav{
       transition-duration: .1s;
     }
 
-@media only screen and (max-width:820px)  {
+@media only screen and (max-width:800px)  {
+    nav{
+        grid-template-rows: 5em;
+    }
     .buttonStyle {
 
-    font-size: 1.5rem;
-    height: 3rem;
+    font-size: 1.5em;
+    height: 1.75em;
 
     }
-    .navLeft{
+    .navLeft{font-size: 2em;
+        line-height: 1em;
+    }
+
+    .libraryContainer{
+        justify-content: center;
     }
 }
 
@@ -178,18 +191,38 @@ nav{
     display: flex;
     flex-direction: column;
     padding:10px 0;
-    
-    
-
-}
-
-.formContainer{
-    border: 2pt solid black;
+    border: 3px solid #673FD7;
     width: 300px;
     border-radius: 20%;
     margin:10px;
-    background-color: #455EB5;
+    background-color: white;
+    
+    
+
 }
+
+
+.formContainer{
+    position: fixed;
+    top:130px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+}
+
+.formLegend{
+    margin-inline :auto;
+    margin-bottom: 4px;
+    padding-inline: 15px;
+    padding-bottom: 3px;
+    background-color: white;
+}
+
+.formBorder{
+    border-radius: 15px;
+    border: #673FD7 3px solid;
+}
+
 
 
 .submitButton{
@@ -205,8 +238,8 @@ nav{
 
 }
 #filmSelect:hover{
-    color: #f9ee5d;
-    box-shadow: #f9ee5d 0 1px 15px;
+    color: #bdb330;
+    box-shadow: #bdb330 0 1px 15px;
     transition-duration: .1s;
 
 }
@@ -218,16 +251,61 @@ nav{
 }
 
 
+
+/* Colors for different media types.  */
+
+
+/* Form and Legend Set up for the Add Menus */
+
 #bookForm{
-background-color: #be4e8e;
+    border: 3px solid #be4e8e;
+    width: 300px;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: white;
+
+/* background-color: #be4e8e; */
 }
 
+#bookLegend{
+    font-size: 1.5em;
+    border-radius: 15px;
+    Border: #be4e8e 3px solid;
+    margin-left: 15px;
+    padding-inline: 15px;
+    background-color: white;
+
+}
 #filmForm{
-background-color: #f9ee5d;
+    border: 3px solid #bdb330;
+    width: 300px;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: white;
+}
+#filmLegend{
+    font-size: 1.5em;
+    border-radius: 15px;
+    Border: #bdb330 3px solid;
+    margin-left: 15px;
+    padding-inline: 15px;
+    background-color: white;
 }
 
 #gameForm{
-    background-color: #4ebe7e;
+    border: 3px solid #4ebe7e;
+    width: 300px;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: white;
+}
+#gameLegend{
+    font-size: 1.5em;
+    border-radius: 15px;
+    Border: #4ebe7e 3px solid;
+    margin-left: 15px;
+    padding-inline: 15px;
+    background-color: white;
 }
 
 .bookBackground{
@@ -235,29 +313,46 @@ background-color: #be4e8e;
 }
     
 .filmBackground{
-background-color: #f9ee5d;
+background-color: #bdb330;
 }
     
 .gameBackground{
     background-color: #4ebe7e;
 }
+ 
+
+
+.bookBorder{
+    border-radius: 15px;
+    Border: #be4e8e 2px solid;
+    }
+        
+.filmBorder{
+    border-radius: 15px;
+    Border: #bdb330 2px solid;
     
+    }
+        
+.gameBorder{
+    border-radius: 15px;
+        Border: #4ebe7e 2px solid;
+    }
 
 
 .formHeader{
     text-align: center;
-    font-size: 2rem;
+    font-size: 2em;
     color: black;
 }
 
 .finishedContainer{
     display: flex;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 
 
 }
 .checkbox{
-    width:1.5rem;
+    width:1.5em;
     height:auto;
     margin-left: 5px;
 
@@ -267,7 +362,7 @@ background-color: #f9ee5d;
 
 }
 #formHeaderFilm{
-    color: #f9ee5d;
+    color: #bdb330;
 
 }
 
@@ -292,12 +387,12 @@ input{
     color:black;
     font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     border-radius: 15px;
-    border: 2pt solid black;
-    height: 2rem;
+    border: 2px solid black;
+    height: 1.5em;
     padding: 0px 10px;
-    font-size: 1.5rem;
+    font-size: 1.25em;
     width: 80%;
-    margin: 1px 0px;
+    margin: 2px 0px;
     
 
 }
@@ -340,3 +435,30 @@ input{
     font-size: 36px;
   }
   
+
+
+  .largeText{
+    font-size: 1.5em;
+  }
+  .smallText{
+    font-size: .7em;
+  }
+
+
+.animation {
+    animation: shake .2s;
+}
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }

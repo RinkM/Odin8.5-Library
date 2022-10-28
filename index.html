@@ -27,17 +27,15 @@
 
   <div class = "formSpace">
     
-    <div id = "formSelector" class = "formContainer hidden">
-      <div class = formHeader> What will you add?</div>
-      <button id = "bookSelect" class = "buttonStyle submitButton">Add Book</button>
-      <button id = "filmSelect" class = "buttonStyle submitButton">Add Film</button>
-      <button id = "gameSelect" class = "buttonStyle submitButton">Add Game</button>
-    </div>
+    <fieldset id = "formSelector" class = "formContainer hidden ">
+        <legend class = "largeText formLegend formBorder">Media Type</legend>
+      <button id = "bookSelect" class = "buttonStyle submitButton">Book</button>
+      <button id = "filmSelect" class = "buttonStyle submitButton">Film</button>
+      <button id = "gameSelect" class = "buttonStyle submitButton">Game</button>
+  </fieldset>
 
-    <div id = "bookForm" class = "hidden formContainer">
-      <div id = "formHeaderBook" class ="formHeader">
-        Enter a Book
-      </div>
+    <fieldset id = "bookForm" class = "formContainer hidden">
+      <legend id = "bookLegend" class = "largeText">Book Details</legend>
       <form action="" method="post" id = 'enterBook' class = "addForm" >
         <div class = "form-inputs"> 
 
@@ -69,13 +67,12 @@
         </div>
         <button type = 'button' form ="enterBook" id = "bookButton" class = "buttonStyle submitButton">Add Book</button>
       </form>
-    </div>
+    </fieldset>
+    
 
 
-    <div id = "filmForm" class = "hidden formContainer">
-      <div id = "formHeaderFilm" class ="formHeader">
-        Enter a Film
-      </div>
+    <fieldset id = "filmForm" class = "formContainer hidden">
+      <legend id = "filmLegend" class = "largeText">Film Details</legend>
       <form action="" method="post" id = 'enterFilm' class = "addForm">
         <div class = "form-inputs"> 
           <input class = "inputFilm" type="hidden" id="mediaType" name="mediaType" value="film" />
@@ -106,13 +103,11 @@
         </div>
         <button type = 'button' form ="enterFilm" id = "filmButton" class = "buttonStyle submitButton">Add Film    </button>
       </form>
-    </div>
+    </fieldset>
 
 
-    <div id = "gameForm" class = "hidden formContainer">
-      <div id = "formHeaderGame" class ="formHeader">
-        Enter a Game
-      </div>
+    <fieldset id = "gameForm" class = "formContainer hidden">
+      <legend id = "gameLegend" class = "largeText"> Enter a book</legend>
       <form action="" method="post" id = 'enterGame' class = "addForm">
         <div class = "form-inputs"> 
           <input class = "inputGame" type="hidden" id="mediaType" name="mediaType" value="game" />
@@ -146,15 +141,15 @@
         </div>
         <button type = 'button' form ="enterGame" id = "gameButton" class = "buttonStyle submitButton">Add Game</button>
       </form>
-    </div>
+    </fieldset>
 
   </div>
 
 
-  <div class = "libraryContainer">
+  <div class = "libraryContainer"></div>  
 
 
-  </div>
+  
 
 </body>
 

@@ -156,43 +156,62 @@ function submitForm (formType){
 
 function cardMaker(){
   library.map(object=> {
-    const mediaCard = document.createElement("div")
+    const mediaCard = document.createElement("fieldset")
     mediaCard.classList.add("mediaContainer")
     mediaCard.id = `card${object.itemId}`
+
+    const legend = document.createElement("legend")
+    legend.classList.add("legend")
+    legend.classList.add("smallText")
 
     const finished = document.createElement("div");
     finished.classList.add("finishedStatus");
     
     if(object.mediaType == 'book'){
-      mediaCard.classList.add("bookBackground")
+    //   mediaCard.classList.add("bookBackground")
+      mediaCard.classList.add("bookBorder")
+      legend.classList.add("bookBorder")
+      legend.innerText = "Book"
 
     }else if(object.mediaType == 'film') {
-      mediaCard.classList.add("filmBackground")
+    //   mediaCard.classList.add("filmBackground")
+      mediaCard.classList.add("filmBorder")
+      legend.classList.add("filmBorder")
+      legend.innerText = "Film"
       
     }else if (object.mediaType == 'game'){
-      mediaCard.classList.add("gameBackground")
+    //   mediaCard.classList.add("gameBackground")
+      mediaCard.classList.add("gameBorder")
+      legend.classList.add("gameBorder")
+      legend.innerText = "Video Game"
     }
     
     const itemTitle = document.createElement("h1");
     itemTitle.classList.add("title");
+    itemTitle.classList.add("largeText");
     itemTitle.textContent = `${object.title}`;
 
     const itemAuthor = document.createElement("div");
     itemAuthor.classList.add("author");
+    itemAuthor.classList.add("smallText");
     itemAuthor.textContent = `${object.author}`;
 
     const itemYear = document.createElement("div");
     itemYear.classList.add("year");
+    itemYear.classList.add("smallText");
     itemYear.textContent = `${object.year}`;
 
     const itemReview = document.createElement("div");
     itemReview.classList.add("review");
+    itemReview.classList.add("smallText");
     itemReview.textContent = `${object.review}`;
 
     const itemNotes = document.createElement("div");
     itemNotes.classList.add("notes");
+    itemNotes.classList.add("smallText");
     itemNotes.textContent = `${object.notes}`;
 
+    mediaCard.appendChild(legend);
     mediaCard.appendChild(finished);
     mediaCard.appendChild(itemTitle);
     mediaCard.appendChild(itemAuthor);
@@ -289,6 +308,9 @@ const showDiv = (divId)=>{
 // Button Functions
 addButton.addEventListener("click",addForm)
 
+
+editButton.addEventListener("click", editPress)
+
 bookSelect.addEventListener("click", function(){
   showDiv('bookForm');
   hideDiv('formSelector')
@@ -346,3 +368,35 @@ window.addEventListener("keydown", handleKeyboardInput)
 
 
 cardMaker()
+
+
+
+
+
+function editPress (){
+  const libraryDiv = document.getElementsByClassName("libraryContainer")
+  // selects all cards in libary.
+  const allCards = Array.from(libraryDiv[0].childNodes)
+  
+  allCards.map(card => {
+    console.log(card)
+    card.style.animation = "shake .5s";
+      }
+    )
+// resets the shaking cards. 
+    allCards.map(card => {
+      console.log(card.style.animation)
+      setTimeout(clear => card.style.removeProperty('animation'),500);
+      // card.classList.toggle('blur')
+        }
+      )
+
+
+
+  }
+
+
+
+  const mediaCard = document.createElement("fieldset")
+  mediaCard.classList.add("mediaContainer")
+  mediaCard.id = `card${object.itemId}`

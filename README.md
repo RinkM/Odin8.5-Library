@@ -40,6 +40,9 @@ https://theonlyhamstertoh.github.io/libraryProject/
     https://austintirrell.github.io/library/
     simple style
 
+https://mattxmade.github.io/odin-library/
+ratings and the font changes.  asks the genre of the book.   
+like the style....
 
 
 A library to keep track of books and movies.

@@ -70,15 +70,36 @@ let library = [{
     const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.finished}`;
     return filmInfo
   }
+  
+
+
+
 }
 ]
 
 
-function Book (mediaType, itemId, title, creator, year, finished, review, notes){
+
+
+function Pizza (pizzaType){
+  this.itemID = 22;
+  this.pizzaType = pizzaType;
+  this.name = "I'm a pizza";
+  this.remove = function (element){
+    element = "It worked!"
+  };
+  this.info = function() {
+    const information = `You wanted a ${this.pizzaType} pizza.`;
+    return information
+};
+  this.result = library.find(media=> {
+  return media.itemId === this.itemID
+});
+}
+function Book (mediaType, itemId, title, author, year, finished, review, notes){
   this.mediaType = mediaType;
   this.itemId = itemId;
   this.title = title;
-  this.creator = creator;
+  this.author = author;
   this.year = year;
   this.finished = finished;
   this.review = review;
@@ -87,7 +108,21 @@ function Book (mediaType, itemId, title, creator, year, finished, review, notes)
       const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
       return bookInfo
   }
+  this.matchID = (element) => element.itemId == this.itemId;
+  
 }
+
+const removeMedia = (itemID)=> {
+  const index = library.findIndex(media=> {
+    return media.itemId === itemID
+  })
+  library.splice(index,1)
+  resetCards();
+  cardMaker();
+}
+
+// someArray.splice(x, 1)
+
 
 const addForms = document.getElementsByClassName("addForm");
 
@@ -399,4 +434,4 @@ function editPress (){
 
   const mediaCard = document.createElement("fieldset")
   mediaCard.classList.add("mediaContainer")
-  mediaCard.id = `card${object.itemId}`
+  // mediaCard.id = `card${object.itemId}`

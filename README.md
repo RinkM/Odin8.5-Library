@@ -1,5 +1,17 @@
 # Odin8.5-Library
 
+## notes from 10/28
+
+worked on adding a function to the book object creater, but it wasn't working.
+Added a separate remove function that needs a number passed through.   it works well enoguh.
+
+Need to build EDIT div template.  Could just be a trashcan.   Press Edit 1 time.  It's there (Change edit to cancel)  
+press edit / cancel again and it reverts and the div is hidden.
+what about just a button that says 'remove' 
+then a 'are you sure?' question?    maybe not.
+
+
+
 
 ## notes from 10/22
 

@@ -189,11 +189,43 @@ function submitForm (formType){
 
 
 
+
+function deleteCard (){
+
+  const delCard = document.createElement("div")
+  const delButton = document.createElement("button")
+  delCard.classList.add("delCard")
+  delButton.classList.add("delButton")
+    
+  delCard.classList.add("hidden")
+  delCard.classList.add("delCard")
+  delButton.classList.add("material-symbols-outlined")
+  delButton.textContent = "delete_forever"
+  delCard.appendChild(delButton);
+
+
+
+
+
+
+
+  return delCard
+  
+}
+
+
+
+
+
 function cardMaker(){
   library.map(object=> {
-    const mediaCard = document.createElement("fieldset")
-    mediaCard.classList.add("mediaContainer")
-    mediaCard.id = `card${object.itemId}`
+
+    const mediaCard = document.createElement("div")
+    mediaCard.classList.add("media")
+
+    const mediaInformation = document.createElement("fieldset")
+    mediaInformation.classList.add("mediaContainer")
+    mediaCard.id = `${object.itemId}`
 
     const legend = document.createElement("legend")
     legend.classList.add("legend")
@@ -203,20 +235,17 @@ function cardMaker(){
     finished.classList.add("finishedStatus");
     
     if(object.mediaType == 'book'){
-    //   mediaCard.classList.add("bookBackground")
-      mediaCard.classList.add("bookBorder")
+      mediaInformation.classList.add("bookBorder")
       legend.classList.add("bookBorder")
       legend.innerText = "Book"
 
     }else if(object.mediaType == 'film') {
-    //   mediaCard.classList.add("filmBackground")
-      mediaCard.classList.add("filmBorder")
+      mediaInformation.classList.add("filmBorder")
       legend.classList.add("filmBorder")
       legend.innerText = "Film"
       
     }else if (object.mediaType == 'game'){
-    //   mediaCard.classList.add("gameBackground")
-      mediaCard.classList.add("gameBorder")
+      mediaInformation.classList.add("gameBorder")
       legend.classList.add("gameBorder")
       legend.innerText = "Video Game"
     }
@@ -246,13 +275,19 @@ function cardMaker(){
     itemNotes.classList.add("smallText");
     itemNotes.textContent = `${object.notes}`;
 
-    mediaCard.appendChild(legend);
-    mediaCard.appendChild(finished);
-    mediaCard.appendChild(itemTitle);
-    mediaCard.appendChild(itemAuthor);
-    mediaCard.appendChild(itemYear);
-    mediaCard.appendChild(itemReview);
-    mediaCard.appendChild(itemNotes);
+    mediaInformation.appendChild(legend);
+    mediaInformation.appendChild(finished);
+    mediaInformation.appendChild(itemTitle);
+    mediaInformation.appendChild(itemAuthor);
+    mediaInformation.appendChild(itemYear);
+    mediaInformation.appendChild(itemReview);
+    mediaInformation.appendChild(itemNotes);
+    mediaCard.appendChild(mediaInformation);
+
+    mediaCard.appendChild(deleteCard())
+
+
+
 
     const libraryDiv = document.getElementsByClassName("libraryContainer")[0];
     libraryDiv.appendChild(mediaCard)
@@ -340,6 +375,8 @@ const showDiv = (divId)=>{
 
 
 
+
+
 // Button Functions
 addButton.addEventListener("click",addForm)
 
@@ -405,33 +442,49 @@ window.addEventListener("keydown", handleKeyboardInput)
 cardMaker()
 
 
+function cardShake(){
+  const libraryDiv = document.getElementsByClassName("mediaContainer")
+  const allCards = Array.from(libraryDiv)
+    allCards.map(card => {
+    card.style.animation = "shake 1s";
+      }
+    )
+    setTimeout (resetShake,1000)
+    } 
 
+
+
+// resets the shaking cards. 
+function resetShake(){
+const libraryDiv = document.getElementsByClassName("mediaContainer")
+const allCards = Array.from(libraryDiv)
+    allCards.map(card => {
+      console.log(card.style.animation)
+      card.style.removeProperty('animation')
+        }
+      )
+    }
 
 
 function editPress (){
-  const libraryDiv = document.getElementsByClassName("libraryContainer")
-  // selects all cards in libary.
-  const allCards = Array.from(libraryDiv[0].childNodes)
   
-  allCards.map(card => {
-    console.log(card)
-    card.style.animation = "shake .5s";
-      }
-    )
-// resets the shaking cards. 
-    allCards.map(card => {
-      console.log(card.style.animation)
-      setTimeout(clear => card.style.removeProperty('animation'),500);
-      // card.classList.toggle('blur')
-        }
-      )
-
-
-
+  const delDiv = document.getElementsByClassName("delCard")
+  const allDel = Array.from(delDiv);
+  const delClasses = allDel[0].classList;
+  allDel.map(card => {
+    card.classList.toggle("hidden")
+    }
+  )
+  if (Array.from(delClasses).indexOf('hidden') == true){
+    console.log('hidden is true')
+    resetShake()
+    
+  } else {
+    console.log('hidden is false')
+    cardShake()
+    
+    
+    
   }
 
-
-
-  const mediaCard = document.createElement("fieldset")
-  mediaCard.classList.add("mediaContainer")
-  // mediaCard.id = `card${object.itemId}`
+  }

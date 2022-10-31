@@ -1,4 +1,16 @@
+
+
+
 # Odin8.5-Library
+
+
+## Notes from 10/30
+
+added the thumbnail for trash can.  CSSed the crap out of it.   
+CHanged edit button function so it adds the trash can and dancing boxes.  and stops them all too. 
+
+"how to select an item when clicked javascript"
+https://softauthor.com/get-id-of-clicked-element-in-javascript/
 
 ## notes from 10/28
 

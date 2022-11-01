@@ -70,10 +70,6 @@ let library = [{
     const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.finished}`;
     return filmInfo
   }
-  
-
-
-
 }
 ]
 
@@ -112,10 +108,14 @@ function Book (mediaType, itemId, title, author, year, finished, review, notes){
   
 }
 
-const removeMedia = (itemID)=> {
+const removeMedia = (itemId)=> {
+  
+  
   const index = library.findIndex(media=> {
-    return media.itemId === itemID
+    
+    return media.itemId == itemId
   })
+  console.log('arg = ', itemId, "index = ", index)
   library.splice(index,1)
   resetCards();
   cardMaker();
@@ -193,15 +193,21 @@ function submitForm (formType){
 function deleteCard (){
 
   const delCard = document.createElement("div")
-  const delButton = document.createElement("button")
   delCard.classList.add("delCard")
-  delButton.classList.add("delButton")
-    
   delCard.classList.add("hidden")
   delCard.classList.add("delCard")
+
+  const delButton = document.createElement("button")
+  delButton.classList.add("delButton")
   delButton.classList.add("material-symbols-outlined")
-  delButton.textContent = "delete_forever"
+  delButton.textContent = "delete_forever";
+  delButton.addEventListener('click', trashButton)
+
+
+  
   delCard.appendChild(delButton);
+
+
 
 
 
@@ -482,9 +488,13 @@ function editPress (){
   } else {
     console.log('hidden is false')
     cardShake()
-    
-    
-    
+  }
   }
 
-  }
+
+function trashButton (evt){
+   const selection = evt.target.parentElement.parentElement.id;
+   removeMedia(selection)
+
+}
+

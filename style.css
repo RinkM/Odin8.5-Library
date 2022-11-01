@@ -1,25 +1,11 @@
-/* 
-
-red / pink  mulberry
-be4e8e
-
-olive green
-beb64e
-
-sea green
-4ebe7e
-
-
-*/
-
-
-
 body{
-    margin:0px
+    margin:0px;
+    position: absolute;
+    z-index: -1;
+    
 }
 
 div{
-
     /* border: 1px solid red; */
 }
 
@@ -29,7 +15,7 @@ div{
     justify-content: flex-end;
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
-    z-index: 0;
+    z-index: -1;
     position: relative;
     top: 6em;
 }

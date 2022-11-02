@@ -1,6 +1,21 @@
 let items = 5
 
+function Media (mediaType, itemId, title, author, year, finished, review, notes){
+  this.mediaType = mediaType;
+  this.itemId = itemId;
+  this.title = title;
+  this.author = author;
+  this.year = year;
+  this.finished = finished;
+  this.review = review;
+  this.notes = notes;
+  this.info = function() {
+      const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
+      return bookInfo
+  }
+}
 
+// dummy data used while testing. 
 let library = [{
     mediaType:"book",
     itemId:0,
@@ -17,9 +32,9 @@ let library = [{
 {
     mediaType:"book",
     itemId:1,
-    title:"The Hobbit",
-    author: "J. R. R. Tolkien",
-    year:"1937",
+    title:"The Martian",
+    author: "Andy Weir",
+    year:"2011",
     finished: true,
     review: "",
     info: function() {
@@ -62,7 +77,7 @@ let library = [{
   itemId: 4,
   title: "Hyperion",
   author: "Dan Simmons",
-  year: "1989`",
+  year: "1989",
   finished: "false",
   review: "It was good",
   notes: "I liked it.",
@@ -74,60 +89,18 @@ let library = [{
 ]
 
 
-
-
-function Pizza (pizzaType){
-  this.itemID = 22;
-  this.pizzaType = pizzaType;
-  this.name = "I'm a pizza";
-  this.remove = function (element){
-    element = "It worked!"
-  };
-  this.info = function() {
-    const information = `You wanted a ${this.pizzaType} pizza.`;
-    return information
-};
-  this.result = library.find(media=> {
-  return media.itemId === this.itemID
-});
-}
-function Book (mediaType, itemId, title, author, year, finished, review, notes){
-  this.mediaType = mediaType;
-  this.itemId = itemId;
-  this.title = title;
-  this.author = author;
-  this.year = year;
-  this.finished = finished;
-  this.review = review;
-  this.notes = notes;
-  this.info = function() {
-      const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
-      return bookInfo
-  }
-  this.matchID = (element) => element.itemId == this.itemId;
-  
-}
-
 const removeMedia = (itemId)=> {
-  
-  
   const index = library.findIndex(media=> {
-    
     return media.itemId == itemId
   })
-  console.log('arg = ', itemId, "index = ", index)
   library.splice(index,1)
   resetCards();
   cardMaker();
 }
 
-// someArray.splice(x, 1)
 
-
-const addForms = document.getElementsByClassName("addForm");
-
-
-// funtion when form is filled out and submit button pressed.
+// funtion after form is filled out and submit button pressed.
+// creates new BOOK using all the data from the form. 
 function submitForm (formType){
     let mediaData = {};
     let formInputs = [];
@@ -146,13 +119,8 @@ function submitForm (formType){
         formInputs = Array.from(document.querySelectorAll('.inputGame'))
       }else {
         console.log("formtype Error")};
-
-    // mediaData['itemId'] = items;
-    // mediaData['finished'] = checkbox.checked
-
     formInputs.map(inputs => mediaData[inputs.id] = inputs.value);
-
-    library[library.length] = new Book (
+    library[library.length] = new Media (
       mediaData.mediaType,
       items,
       mediaData.title,
@@ -165,17 +133,17 @@ function submitForm (formType){
     items++;
 
     console.log(mediaData);
-    // library.push(mediaData);
+
+    // clears the screen and re-draws the cards
     returnScreen();
     resetCards();
     cardMaker();
-
-
 }
 
 
 
 // ? from Dog Form.     look at verify information....
+// create a verify function to test the inputs...
 // form.addEventListener('submit', function(e) {
 //     e.preventDefault();
 //     const formData = new FormData(this);
@@ -189,9 +157,7 @@ function submitForm (formType){
 
 
 
-
-function deleteCard (){
-
+function makeDelButton (){
   const delCard = document.createElement("div")
   delCard.classList.add("delCard")
   delCard.classList.add("hidden")
@@ -202,27 +168,15 @@ function deleteCard (){
   delButton.classList.add("material-symbols-outlined")
   delButton.textContent = "delete_forever";
   delButton.addEventListener('click', trashButton)
-
-
   
   delCard.appendChild(delButton);
-
-
-
-
-
-
-
-
 
   return delCard
   
 }
 
 
-
-
-
+// builds the cards from each entry in the library.  
 function cardMaker(){
   library.map(object=> {
 
@@ -290,18 +244,11 @@ function cardMaker(){
     mediaInformation.appendChild(itemNotes);
     mediaCard.appendChild(mediaInformation);
 
-    mediaCard.appendChild(deleteCard())
-
-
-
+    mediaCard.appendChild(makeDelButton())
 
     const libraryDiv = document.getElementsByClassName("libraryContainer")[0];
     libraryDiv.appendChild(mediaCard)
-    
-
   })
-
-
 }
 
 
@@ -313,7 +260,7 @@ function resetCards(){
 
 
 
-// All Button Constants
+// All Teal Button Constants
 const addButton = document.getElementById('addButton')
 const editButton = document.getElementById('editButton')
 
@@ -325,10 +272,7 @@ const bookButton = document.getElementById('bookButton')
 const filmButton = document.getElementById('filmButton')
 const gameButton = document.getElementById('gameButton')
 
-
-
-
-
+// used to return to home screen, like after pressing the add button.
 const returnScreen =()=>{
   const library = document.getElementsByClassName("libraryContainer")[0];
   library.classList.remove('blur')
@@ -346,6 +290,8 @@ const returnScreen =()=>{
   formSelector.classList.add("hidden")
 }
 
+
+// after add button pressed.  blurs the screen and shows teh form selector.
 const addForm =()=>{
     const library = document.getElementsByClassName("libraryContainer")[0];
     library.classList.add('blur')
@@ -365,9 +311,6 @@ const addForm =()=>{
 
 }
 
-
-// How do I reduce these?     The button wouldn't let me pass arguments without running)
-
 const hideDiv = (divId)=>{
   const hiddenDiv = document.getElementById(divId);
   hiddenDiv.classList.add("hidden");
@@ -379,16 +322,9 @@ const showDiv = (divId)=>{
   visibleDiv.classList.remove("hidden")
 }
 
-
-
-
-
 // Button Functions
 addButton.addEventListener("click",addForm)
-
-
 editButton.addEventListener("click", editPress)
-
 bookSelect.addEventListener("click", function(){
   showDiv('bookForm');
   hideDiv('formSelector')
@@ -401,7 +337,6 @@ gameSelect.addEventListener("click", function(){
   showDiv("gameForm");
   hideDiv('formSelector')
 })
-
 bookButton.addEventListener("click", function(){
     submitForm('book');
 })
@@ -412,11 +347,12 @@ gameButton.addEventListener("click",function(){
     submitForm('game');
 })
 
-
 const handleKeyboardInput = (e) => {
   // console.log(e)
   if (e.key == "Escape") {
-    returnScreen()
+    returnScreen();
+    resetCards();
+    cardMaker();
     
     // hideDiv('formSelector')
     // hideDiv("gameForm");
@@ -426,24 +362,9 @@ const handleKeyboardInput = (e) => {
   } else if (e.key == "Enter"){
 
   }
-
-
-
-  // if ((e.key >= 0 && e.key <= 9) || e.key == ".") {buttonNumber(e.key);
-  // } else if (e.key == "=" || e.key == "Enter") {buttonEquals();
-  // } else if (e.key == "Escape") {buttonClear();
-  // } else if (e.key == "*"){buttonOperation("x");
-  // } else if (e.key == "+" || e.key == "-" || e.key == "x" || e.key == "/") {{buttonOperation(e.key);}
-  // }
-  
-  // if (e.key == "Backspace") deleteOne();
 };
 
-
 window.addEventListener("keydown", handleKeyboardInput)
-
-
-
 
 cardMaker()
 
@@ -458,8 +379,6 @@ function cardShake(){
     setTimeout (resetShake,1000)
     } 
 
-
-
 // resets the shaking cards. 
 function resetShake(){
 const libraryDiv = document.getElementsByClassName("mediaContainer")
@@ -473,7 +392,7 @@ const allCards = Array.from(libraryDiv)
 
 
 function editPress (){
-  
+  returnScreen()
   const delDiv = document.getElementsByClassName("delCard")
   const allDel = Array.from(delDiv);
   const delClasses = allDel[0].classList;
@@ -487,14 +406,20 @@ function editPress (){
     
   } else {
     console.log('hidden is false')
+    
     cardShake()
   }
   }
 
-
 function trashButton (evt){
    const selection = evt.target.parentElement.parentElement.id;
    removeMedia(selection)
-
 }
 
+
+function clickAway (evt){
+  const selection = evt.target;
+  console.log(selection)
+}
+
+window.addEventListener('click', clickAway) 

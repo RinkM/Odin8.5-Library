@@ -4,13 +4,36 @@
 # Odin8.5-Library
 
 
+
+## notes from 10/31
+got remove buttons to work.
+
+need to look at escape key.  can use it for edit button too...
+
+const handleKeyboardInput = (e) => {
+  // console.log(e)
+  if (e.key == "Escape") {
+    returnScreen()
+
+Overflow from cards.   Like if there's a really large title.   Can scroll?   Expand???  IDK?
+
+
+
+thigns to add :
+5 star ratings.  only after you've read it.
+wishlist?
+notes?   do I really need them?
+re-draw teh cards.  the style is BORING.
+
+a way to sort?
+
+
+
+
 ## Notes from 10/30
 
 added the thumbnail for trash can.  CSSed the crap out of it.   
 CHanged edit button function so it adds the trash can and dancing boxes.  and stops them all too. 
-
-"how to select an item when clicked javascript"
-https://softauthor.com/get-id-of-clicked-element-in-javascript/
 
 ## notes from 10/28
 

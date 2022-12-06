@@ -14,6 +14,7 @@ https://www.theodinproject.com/lessons/node-path-javascript-library
 
 
 ## Summary of Learning
+* Stretch Goal - differentiate the media types (book, game, film) with different info, objects, and styles. 
 * built objects using object contstructors.
 * built more forms to enter data, then display the data.
 * differentiated the forms and information depending on media type
@@ -23,6 +24,9 @@ https://www.theodinproject.com/lessons/node-path-javascript-library
 ## Stretch Goals - Future?
 * Major on is to add API info with book / game / movie  cover.  check the information and autopopulate it.   I'm not there... yet.
 
+## 2nd Branch Goals
+From Odin 
+`Go back to your “Library” example and refactor it to use class instead of plain constructors. Don’t forget to use the git workflow you learned in this foundations lesson to work on a new feature. You should get used to working like this! `
 
 
 ## notes from 10/31

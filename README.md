@@ -6,6 +6,25 @@
 Assignment is found here : 
 https://www.theodinproject.com/lessons/node-path-javascript-library
 
+## Learning Objectives 
+* Goal is to create a media library where user can add books to their library and information regarding the books. 
+* User should be able to add and remove items.  
+* Practice organizing data using objects. 
+* More form practice. 
+
+
+## Summary of Learning
+* built objects using object contstructors.
+* built more forms to enter data, then display the data.
+* differentiated the forms and information depending on media type
+* practiced using CSS animation
+* used JS to build many features. 
+
+## Stretch Goals - Future?
+* Major on is to add API info with book / game / movie  cover.  check the information and autopopulate it.   I'm not there... yet.
+
+
+
 ## notes from 10/31
 got remove buttons to work.
 

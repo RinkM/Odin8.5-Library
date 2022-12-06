@@ -3,7 +3,8 @@
 
 # Odin8.5-Library
 
-
+Assignment is found here : 
+https://www.theodinproject.com/lessons/node-path-javascript-library
 
 ## notes from 10/31
 got remove buttons to work.

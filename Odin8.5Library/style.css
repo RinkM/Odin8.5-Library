@@ -15,6 +15,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+div{
+  /* border: 1pt red solid */
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -65,6 +71,7 @@ h1 {
 }
 
 button {
+  height: fit-content;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -95,3 +102,36 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+
+
+
+
+.searchContainer {
+  display: flex;
+  height: auto;
+
+}
+
+
+.searchInput {
+  width:250px;
+
+}
+
+.searchResult{
+  text-align: left;
+  margin:2px;
+}
+
+.searchResult:hover{
+  border: 1px solid blue;
+  margin: 1px;
+}
+.searchResults{
+  height: 8em;
+  width: 700px;
+}
+

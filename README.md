@@ -1,6 +1,3 @@
-
-
-
 # Odin8.5-Library
 
 Assignment is found here : 
@@ -22,11 +19,31 @@ https://www.theodinproject.com/lessons/node-path-javascript-library
 * used JS to build many features. 
 
 ## Stretch Goals - Future?
-* Major on is to add API info with book / game / movie  cover.  check the information and autopopulate it.   I'm not there... yet.
+* Major one is to add API info with book / game / movie  cover.  check the information and autopopulate it.   I'm not there... yet.
 
 ## 2nd Branch Goals
 From Odin 
 `Go back to your “Library” example and refactor it to use class instead of plain constructors. Don’t forget to use the git workflow you learned in this foundations lesson to work on a new feature. You should get used to working like this! `
+
+
+## Notes Jan 30 2023
+Revision. 
+
+Changes include...
+
+How the app works : 
+1) app displays the data in the library. Builds a card for each item. *library includes img of the item. *
+2) on Add Media button press, form opens.  Select media type. New form to fill in the item and information.
+3) Add API Calls to each form to search for the media name.  Get information about the item and display it.
+4) Take form data and add new object to the library.  Class ? Or function?
+5) 
+
+
+Html : Main page, 1+3 forms (error msgs!), 
+
+Javascript : Display media.
+
+Entry point:
 
 
 ## notes from 10/31

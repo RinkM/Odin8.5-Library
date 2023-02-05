@@ -8,28 +8,35 @@
   </head>
   <body>
     <div id="app">
-      <div>Search Form
-        <input class = "input" 
-          type = "text"   
-          id = "searchInput" 
-          name = "searchText" 
-          placeholder = "Search">
-        <button 
-          type = 'button' 
-          id = "searchBookButton" 
-          class = "buttonStyle submitButton">
-          Search Book
-        </button>
-        <button 
-          type = 'button' 
-          id = "searchMovieButton" 
-          class = "buttonStyle submitButton">
-          Search Movie
-        </button>
+
+      <div id = "searchContainer--book" class = "searchContainer">
+        <div id = "inputContainer--book" class = "inputContainer" >
+          Search Books:
+          <input class = "searchInput" 
+            type = "text"   
+            id = "searchInput--book" 
+            name = "searchText" 
+            placeholder = "Find a Book">
+            <!-- <div id = "searchResults--book" class = "searchResults"></div> -->
+        </div>
+
       </div>
-      <div id = "searchResults"></div>
+
+      <div id = "searchContainer--movie" class = "searchContainer">
+        <div id = "inputContainer--movie" class = "inputContainer">
+          Search Movies:
+          <input class = "searchInput" 
+            type = "text"   
+            id = "searchInput--movie" 
+            name = "searchText" 
+            placeholder = "Find a Movie">
+            <!-- <div id = "searchResults--movie" class = "searchResults"></div> -->
+        </div>
+      </div>
+      <div id = "searchAutoComplete" class = "searchResults"></div>
   </div>
     
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+

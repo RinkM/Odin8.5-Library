@@ -7,13 +7,13 @@ async function movieSearch (searchTerm){
   const response = await fetch(searchAPI);
   const info = await response.json();
   // console.log(info.results)
-  const fiveItems = info.results.slice(0, 4)
-  console.log(fiveItems)
-  fiveItems.map((movie)=>{
-    console.log (movie.title, movie.id)
-  })
+  const fiveMovieItems = info.results.slice(0, 5)
+  console.log(fiveMovieItems)
+  // fiveMovieItems.map((movie)=>{
+  //   console.log (movie.title, movie.id)
+  // })
 
-  return info
+  return fiveMovieItems
 } 
 
 

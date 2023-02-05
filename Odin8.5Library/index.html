@@ -7,7 +7,29 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div>Search Form
+        <input class = "input" 
+          type = "text"   
+          id = "searchInput" 
+          name = "searchText" 
+          placeholder = "Search">
+        <button 
+          type = 'button' 
+          id = "searchBookButton" 
+          class = "buttonStyle submitButton">
+          Search Book
+        </button>
+        <button 
+          type = 'button' 
+          id = "searchMovieButton" 
+          class = "buttonStyle submitButton">
+          Search Movie
+        </button>
+      </div>
+      <div id = "searchResults"></div>
+  </div>
+    
     <script type="module" src="/main.js"></script>
   </body>
 </html>

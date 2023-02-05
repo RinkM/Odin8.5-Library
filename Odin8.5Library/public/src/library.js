@@ -1,7 +1,24 @@
 
 // This is a template for the data:
 
+const AddBook = (values) => {
+  const creationDate = Date.now()
+  const book = {
+    mediaType : "book",
+    itemId : creationDate,
+    title : values.title,
+    author : values.author,
+    year : values.year,
+    finished : true,
+    review : "",
+  }
+  return book
+}
 
+function addToLibrary (media){
+  library.push(media)
+  return library
+}
 
 
 let library = [{

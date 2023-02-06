@@ -2,6 +2,30 @@
 
 
 
+
+
+export default function mediaDetails (libraryItem) {
+  const container = document.getElementById("container")
+  container.classList.remove("hidden")
+
+  const mediaImage = document.getElementById("mediaDetails--image")
+  mediaImage.src = libraryItem.imageSource
+  
+  const mediaTitle = document.getElementById("mediaDetails--title")
+  const mediaYear = document.getElementById("mediaDetails--year")
+  const mediaMaker= document.getElementById("mediaDetails--maker")
+
+  mediaTitle.innerText = libraryItem.title;
+  mediaYear.innerText = libraryItem.year;
+  mediaMaker.innerText = libraryItem.maker;
+}
+
+
+
+
+
+
+
 // used to return to home screen, like after pressing the add button.
 const returnScreen =()=>{
   const library = document.getElementsByClassName("libraryContainer")[0];

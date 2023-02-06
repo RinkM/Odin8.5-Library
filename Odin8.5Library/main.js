@@ -1,6 +1,15 @@
 import './style.css'
 import bookSearch from './public/src/bookApi';
-import movieSearch from './public/src/movieApi';
+import {movieSearch, getMovieDetails, getMoviePoster} from './public/src/movieApi';
+import mediaDetails from './public/src/domScript';
+
+
+
+const movieInput = document.getElementById("searchInput--movie");
+const bookInput = document.getElementById("searchInput--book");
+
+bookInput.addEventListener("keyup", () => bookButton())
+movieInput.addEventListener("keyup", () => movieButton())
 
 
 async function bookButton() {
@@ -8,9 +17,9 @@ async function bookButton() {
   const searchValue = getSearchValue(searchInput);
   const bookResults =  await bookSearch(searchValue);
   console.log(bookResults)
-
   renderSearchResults(bookResults)
 } 
+
 async function movieButton(){
   const searchInput = document.getElementById("searchInput--movie");
   const searchValue = getSearchValue(searchInput);
@@ -19,15 +28,10 @@ async function movieButton(){
   console.log(movieResults)
 }
 
-
 function getSearchValue (input){
   return input.value
 }
-const movieInput = document.getElementById("searchInput--movie");
-const bookInput = document.getElementById("searchInput--book");
 
-bookInput.addEventListener("keyup", () => bookButton())
-movieInput.addEventListener("keyup", () => movieButton())
 
 
 // ! can I sleect books by ISBN?
@@ -35,29 +39,42 @@ movieInput.addEventListener("keyup", () => movieButton())
 function renderSearchResults (items){
   let idCount = 0;
   
-  function removeOldResults(){
+  // function removeOldResults(){
     const autoComplete = document.getElementById("searchAutoComplete");
     autoComplete.innerHTML = "";
-  }
+  // }
   
-  removeOldResults()
+  // removeOldResults()
 
   items.map((item) => {
     
     const searchResult = document.createElement("div")
     searchResult.setAttribute("id",`result${idCount}`);
     searchResult.classList.add("searchResult");
+    
+    searchResult.addEventListener("click", async function selectMedia(){
+      console.log(item)
+      const mediaObject = await createMedia(item)
+      console.log(mediaObject)
+      mediaDetails(mediaObject)
+
+
+      // let details = await getMovieDetails(item.id)
+      // console.log(details)
+      // mediaObject();
+      // mediaDetails();
+
+    })
 
     if (item.title){
-      const movieId = item.id
 
+
+      const movieId = item.id
       const shortTitle = shortenText(item.title)
       const year = shortenDate(item.release_date)
-      console.log("movie", item)
 
       searchResult.textContent = `${shortTitle} (${year})`
     } else {
-      console.log("book", item.volumeInfo)
       const shortTitle = shortenText(item.volumeInfo.title)
       const shortAuthor = shortenText(combineAuthors(item.volumeInfo.authors))
       searchResult.textContent = `${shortTitle} (${shortAuthor})`
@@ -103,30 +120,30 @@ function shortenDate (date){
 
 
 
-function addItem (mediaType, itemId, title, author, year, finished, review, notes)
-{
-
-  let libraryItem = {
-    name: mediaData
+async function createMedia (item) {
+  const currentTime = Date.now()
+  let libraryItem = {}
+  // volumeInfo is from GoogleBooksApi.
+  if (item.volumeInfo){
+    libraryItem.id = currentTime, 
+    libraryItem.mediaData = "book",
+    libraryItem.title = item.volumeInfo.title;
+    libraryItem.maker = item.volumeInfo.authors;
+    libraryItem.year = item.volumeInfo.publishedDate;
+    libraryItem.imageSource = item.volumeInfo.imageLinks.thumbnail;
+    libraryItem.consumedStatus = false;
+    libraryItem.review = 2;
+  } else if (item.title){
+    let details = await getMovieDetails(item.id)
+    console.log(details)
+    libraryItem.id = currentTime, 
+    libraryItem.mediaData = "movie",
+    libraryItem.title = item.title;
+    libraryItem.maker = "";
+    libraryItem.year = item.release_date;
+    libraryItem.imageSource = getMoviePoster(item.poster_path);
+    libraryItem.consumedStatus = false;
+    libraryItem.review = 2;
   }
-
-
-//   {
-//     this.mediaType = mediaType;
-//     this.itemId = itemId;
-//     this.title = title;
-//     this.author = author;
-//     this.year = year;
-//     this.finished = finished;
-//     this.review = review;
-//     this.notes = notes;
-// }
-
-// info(){
-//     const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.consumedStatus}`;
-//     return bookInfo
-// }
-}
-
-
+  return libraryItem
 }

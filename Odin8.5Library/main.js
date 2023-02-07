@@ -1,15 +1,17 @@
 import './style.css'
-import bookSearch from './public/src/bookApi';
-import {movieSearch, getMovieDetails, getMoviePoster} from './public/src/movieApi';
-import mediaDetails from './public/src/domScript';
+import {bookSearch, gameSearch} from './src/bookApi';
+import {movieSearch, getMovieDetails, getMoviePoster} from './src/movieApi';
+import mediaDetails from './src/domScript';
 
 
 
 const movieInput = document.getElementById("searchInput--movie");
 const bookInput = document.getElementById("searchInput--book");
+const gameInput = document.getElementById("searchInput--game");
 
 bookInput.addEventListener("keyup", () => bookButton())
 movieInput.addEventListener("keyup", () => movieButton())
+gameInput.addEventListener("keyup", () => gameButton())
 
 
 async function bookButton() {
@@ -19,6 +21,16 @@ async function bookButton() {
   console.log(bookResults)
   renderSearchResults(bookResults)
 } 
+
+async function gameButton(){
+  const searchInput = document.getElementById("searchInput--game");
+  const searchValue = getSearchValue(searchInput);
+  const gameResults =  await gameSearch(searchValue);
+  console.log(gameResults)
+  renderSearchResults(gameResults)
+  
+}
+
 
 async function movieButton(){
   const searchInput = document.getElementById("searchInput--movie");
@@ -57,31 +69,23 @@ function renderSearchResults (items){
       const mediaObject = await createMedia(item)
       console.log(mediaObject)
       mediaDetails(mediaObject)
-
-
-      // let details = await getMovieDetails(item.id)
-      // console.log(details)
-      // mediaObject();
-      // mediaDetails();
-
     })
-
     if (item.title){
-
-
       const movieId = item.id
       const shortTitle = shortenText(item.title)
       const year = shortenDate(item.release_date)
-
       searchResult.textContent = `${shortTitle} (${year})`
-    } else {
+    } else if (item.slug){
+        const gameId = item.id
+        const shortTitle = shortenText(item.name)
+        const year = shortenDate(item.released)
+        searchResult.textContent = `${shortTitle} (${year})`
+      } else {
       const shortTitle = shortenText(item.volumeInfo.title)
       const shortAuthor = shortenText(combineAuthors(item.volumeInfo.authors))
       searchResult.textContent = `${shortTitle} (${shortAuthor})`
     }
     autoComplete.appendChild(searchResult)
-
-
     idCount++
   })
 }
@@ -119,7 +123,7 @@ function shortenDate (date){
 }
 
 
-
+// !Cut this up to handle each API.   Put into a file.  
 async function createMedia (item) {
   const currentTime = Date.now()
   let libraryItem = {}
@@ -144,6 +148,23 @@ async function createMedia (item) {
     libraryItem.imageSource = getMoviePoster(item.poster_path);
     libraryItem.consumedStatus = false;
     libraryItem.review = 2;
+  } else if (item.slug){
+    let details = await getMovieDetails(item.id)
+    console.log(details)
+    libraryItem.id = currentTime, 
+    libraryItem.mediaData = "game",
+    libraryItem.title = item.name;
+    libraryItem.maker = "";
+    libraryItem.year = item.released;
+    libraryItem.imageSource = item.short_screenshots[1].image;
+    libraryItem.consumedStatus = false;
+    libraryItem.review = 2;
+
   }
   return libraryItem
 }
+
+
+
+
+

@@ -139,7 +139,7 @@ button:focus-visible {
 #container--mediaDetails{
   padding:10px;
   border:#1a1a1a solid 2pt;
-  display: flex;
+  
   column-gap: 5px;
 
 }
@@ -147,4 +147,9 @@ button:focus-visible {
 
 .hidden{
   display: none;
+}
+
+
+#mediaDetails--image{
+  width:180px;
 }

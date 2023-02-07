@@ -14,6 +14,24 @@
 }
 
 
+async function gameSearch (searchTerm){
+  const gameApi = "64c2aeeb46ed47e2a2ce4c9f002e020f"
+  
+  const url = `https://api.rawg.io/api/games?key=${gameApi}&search=${searchTerm}`
+ 
+  const response = await fetch(url);
+  const info = await response.json();
+
+  const fiveBookItems = info.results.slice(0,5)
+
+   console.log(fiveBookItems)
+
+  return fiveBookItems
+}
 
 
-export default bookSearch
+
+
+
+
+export {bookSearch, gameSearch}

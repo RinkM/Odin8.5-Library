@@ -1,3 +1,80 @@
+
+let library = [
+  {
+  mediaType:"book",
+  itemId:0,
+  title:"The Hobbit",
+  author: "J. R. R. Tolkien",
+  year:"1954",
+  finished: true,
+  review: "",
+  info: function() {
+      const bookInfo = `${this.title} by ${this.author}. Released in ${this.year}. Read? ${this.finished}`;
+      return bookInfo
+  }
+}, 
+{
+  mediaType:"book",
+  itemId:1,
+  title:"The Martian",
+  author: "Andy Weir",
+  year:"2011",
+  finished: true,
+  review: "",
+  info: function() {
+      const bookInfo = `${this.title} by ${this.author}. ${this.pages} pages. Read? ${this.finished}`;
+      return bookInfo
+  }
+},
+{
+  mediaType:"film",
+  itemId:2,
+  title:"The Hobbit",
+  author: "Peter Jackson",
+  year:"2012",
+  finished: true,
+  review:"",
+  notes:"",
+
+  info : function() {
+      const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.finished}`;
+      return filmInfo
+  }
+},
+{
+  mediaType:"game",
+  itemId:3,
+  title:"The Legend of Zelda : Breath of the Wild",
+  author: "Nintendo",
+  year:"2017",
+  finished: false,
+  review:"",
+  notes:"",
+  info : function() {
+      const gameInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Played? ${this.finished}`;
+      return gameInfo
+  }
+},
+{
+
+mediaType: "book",
+itemId: 4,
+title: "Hyperion",
+author: "Dan Simmons",
+year: "1989",
+finished: "false",
+review: "It was good",
+notes: "I liked it.",
+info : function() {
+  const filmInfo = `${this.title} by ${this.director}. ${this.minutes} minutes long. Watched? ${this.finished}`;
+  return filmInfo
+}
+}
+]
+
+
+
+
 let items = 5
 
 class Media {

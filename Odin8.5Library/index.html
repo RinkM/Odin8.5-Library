@@ -8,59 +8,65 @@
   </head>
   <body>
     <div id="app">
+      <div id = "container--top">
+        <div id = "search">
+          <div id = "searchContainer--book" class = "searchContainer">
+            <div id = "inputContainer--book" class = "inputContainer" >
+              Search Books:
+              <input class = "searchInput"
+                type = "text"
+                id = "searchInput--book"
+                name = "searchText"
+                placeholder = "Find a Book">
+                <!-- <div id = "searchResults--book" class = "searchResults"></div> -->
+            </div>
+          </div>
 
-      <div id = "search">
-        <div id = "searchContainer--book" class = "searchContainer">
-          <div id = "inputContainer--book" class = "inputContainer" >
-            Search Books:
-            <input class = "searchInput"
-              type = "text"
-              id = "searchInput--book"
-              name = "searchText"
-              placeholder = "Find a Book">
-              <!-- <div id = "searchResults--book" class = "searchResults"></div> -->
+          <div id = "searchContainer--movie" class = "searchContainer">
+            <div id = "inputContainer--movie" class = "inputContainer">
+              Search Movies:
+              <input class = "searchInput"
+                type = "text"
+                id = "searchInput--movie"
+                name = "searchText"
+                placeholder = "Find a Movie">
+                <!-- <div id = "searchResults--movie" class = "searchResults"></div> -->
+            </div>
+          </div>
+
+          <div id = "searchContainer--game" class = "searchContainer">
+            <div id = "inputContainer--game" class = "inputContainer">
+              Search Games:
+              <input class = "searchInput"
+                type = "text"
+                id = "searchInput--game"
+                name = "searchText"
+                placeholder = "Find a Movie">
+                <!-- <div id = "searchResults--game" class = "searchResults"></div> -->
+            </div>
+          </div>
+
+          <div id = "searchAutoComplete" class = "searchResults">
           </div>
         </div>
-
-        <div id = "searchContainer--movie" class = "searchContainer">
-          <div id = "inputContainer--movie" class = "inputContainer">
-            Search Movies:
-            <input class = "searchInput"
-              type = "text"
-              id = "searchInput--movie"
-              name = "searchText"
-              placeholder = "Find a Movie">
-              <!-- <div id = "searchResults--movie" class = "searchResults"></div> -->
+        <div id = "container--mediaDetails" class = "hidden">
+          <div id = "container--mediaDetails">
+            <div id = mediaDetails--text>
+              <div id = "mediaDetails--title"></div>
+              <div id = "mediaDetails--maker"></div>
+              <div id = "mediaDetails--year"></div>
+            </div>
+            <div id = "mediaDetails--image--container">
+              <img id ="mediaDetails--image" src="#" alt="">
+            </div>
           </div>
-        </div>
-
-        <div id = "searchContainer--game" class = "searchContainer">
-          <div id = "inputContainer--game" class = "inputContainer">
-            Search Games:
-            <input class = "searchInput"
-              type = "text"
-              id = "searchInput--game"
-              name = "searchText"
-              placeholder = "Find a Movie">
-              <!-- <div id = "searchResults--game" class = "searchResults"></div> -->
-          </div>
-        </div>
-
-        <div id = "searchAutoComplete" class = "searchResults">
+          <button id = "addMediaBtn">Add</button>
         </div>
       </div>
-      <div id = "container" class = "hidden">
-        <div id = "container--mediaDetails">
-          <div id = mediaDetails--text>
-            <div id = "mediaDetails--title"></div>
-            <div id = "mediaDetails--maker"></div>
-            <div id = "mediaDetails--year"></div>
-          </div>
-          <div id = "mediaDetails--image--container">
-            <img id ="mediaDetails--image" src="#" alt="">
-          </div>
+
+      <div id = "container--bottom">
+        <div id = "container--library">
         </div>
-        <button id = "addMediaBtn">Add</button>
       </div>
 
 

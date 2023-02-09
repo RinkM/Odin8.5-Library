@@ -1,11 +1,11 @@
 
 
+import {addToLibrary, renderLibrary} from "./library"
 
 
 
-
-export default function mediaDetails (libraryItem) {
-  const container = document.getElementById("container")
+function renderMediaDetails (libraryItem) {
+  const container = document.getElementById("container--mediaDetails")
   container.classList.remove("hidden")
 
   const mediaImage = document.getElementById("mediaDetails--image")
@@ -18,10 +18,16 @@ export default function mediaDetails (libraryItem) {
   mediaTitle.innerText = libraryItem.title;
   mediaYear.innerText = libraryItem.year;
   mediaMaker.innerText = libraryItem.maker;
+
+  const addMediaBtn = document.getElementById("addMediaBtn")
+  addMediaBtn.addEventListener('click', () => {
+    addToLibrary(libraryItem);
+    renderLibrary();
+  })
+
 }
 
-
-
+export {renderMediaDetails, renderLibrary}
 
 
 

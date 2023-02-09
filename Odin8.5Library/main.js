@@ -1,9 +1,8 @@
 import './style.css'
 import {bookSearch, gameSearch} from './src/bookApi';
-import {movieSearch, getMovieDetails, getMoviePoster} from './src/movieApi';
-import mediaDetails from './src/domScript';
-
-
+import {movieSearch} from './src/movieApi';
+import createMediaObject from './src/createMediaObject';
+import {renderMediaDetails, renderLibrary} from './src/domScript';
 
 const movieInput = document.getElementById("searchInput--movie");
 const bookInput = document.getElementById("searchInput--book");
@@ -44,8 +43,6 @@ function getSearchValue (input){
   return input.value
 }
 
-
-
 // ! can I sleect books by ISBN?
 //  titles need to be character limited.   add authors too?   40/20?
 function renderSearchResults (items){
@@ -55,8 +52,6 @@ function renderSearchResults (items){
     const autoComplete = document.getElementById("searchAutoComplete");
     autoComplete.innerHTML = "";
   // }
-  
-  // removeOldResults()
 
   items.map((item) => {
     
@@ -65,10 +60,9 @@ function renderSearchResults (items){
     searchResult.classList.add("searchResult");
     
     searchResult.addEventListener("click", async function selectMedia(){
-      console.log(item)
-      const mediaObject = await createMedia(item)
+      const mediaObject = await createMediaObject(item)
       console.log(mediaObject)
-      mediaDetails(mediaObject)
+      renderMediaDetails(mediaObject)
     })
     if (item.title){
       const movieId = item.id
@@ -121,50 +115,3 @@ function shortenDate (date){
   const shortDate = date.slice(0,4)
   return shortDate
 }
-
-
-// !Cut this up to handle each API.   Put into a file.  
-async function createMedia (item) {
-  const currentTime = Date.now()
-  let libraryItem = {}
-  // volumeInfo is from GoogleBooksApi.
-  if (item.volumeInfo){
-    libraryItem.id = currentTime, 
-    libraryItem.mediaData = "book",
-    libraryItem.title = item.volumeInfo.title;
-    libraryItem.maker = item.volumeInfo.authors;
-    libraryItem.year = item.volumeInfo.publishedDate;
-    libraryItem.imageSource = item.volumeInfo.imageLinks.thumbnail;
-    libraryItem.consumedStatus = false;
-    libraryItem.review = 2;
-  } else if (item.title){
-    let details = await getMovieDetails(item.id)
-    console.log(details)
-    libraryItem.id = currentTime, 
-    libraryItem.mediaData = "movie",
-    libraryItem.title = item.title;
-    libraryItem.maker = "";
-    libraryItem.year = item.release_date;
-    libraryItem.imageSource = getMoviePoster(item.poster_path);
-    libraryItem.consumedStatus = false;
-    libraryItem.review = 2;
-  } else if (item.slug){
-    let details = await getMovieDetails(item.id)
-    console.log(details)
-    libraryItem.id = currentTime, 
-    libraryItem.mediaData = "game",
-    libraryItem.title = item.name;
-    libraryItem.maker = "";
-    libraryItem.year = item.released;
-    libraryItem.imageSource = item.short_screenshots[1].image;
-    libraryItem.consumedStatus = false;
-    libraryItem.review = 2;
-
-  }
-  return libraryItem
-}
-
-
-
-
-

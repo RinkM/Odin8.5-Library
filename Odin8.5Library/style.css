@@ -146,9 +146,13 @@ button:focus-visible {
 .libraryItem{
   margin:5px;
   max-width: 250px;
-  width: auto;
+  max-height: 200px;
+  display:flex;
+  /* height:200px;
+  width: 200px; */
   
 }
 .libraryImage{
   max-width: 250px;
+  max-height: 200px;
 }

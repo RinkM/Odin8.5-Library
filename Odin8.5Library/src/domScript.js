@@ -19,7 +19,16 @@ function renderMediaDetails (libraryItem) {
   mediaYear.innerText = libraryItem.year;
   mediaMaker.innerText = libraryItem.maker;
 
-  const addMediaBtn = document.getElementById("addMediaBtn")
+  if (document.getElementById("addMediaBtn")) {
+    document.getElementById("addMediaBtn").remove()
+  }
+  const addMediaBtn = document.createElement("button");
+  addMediaBtn.setAttribute("id", "addMediaBtn")
+  addMediaBtn.innerText = "Adds"
+
+  container.appendChild(addMediaBtn)
+
+  
   addMediaBtn.addEventListener('click', () => {
     addToLibrary(libraryItem);
     renderLibrary();

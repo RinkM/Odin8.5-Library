@@ -61,7 +61,7 @@ function renderSearchResults (items){
     
     searchResult.addEventListener("click", async function selectMedia(){
       const mediaObject = await createMediaObject(item)
-      console.log(mediaObject)
+      console.log("mediaObject", mediaObject)
       renderMediaDetails(mediaObject)
     })
     if (item.title){

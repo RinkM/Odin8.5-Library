@@ -8,10 +8,7 @@ function addToLibrary (media){
 
 
 function renderLibrary(){
-
   const libraryContainer = document.getElementById("container--library");
-
-
   libraryContainer.innerHTML = "";
   library.map((item) => {
     const mediaDiv = document.createElement("div");

@@ -1,15 +1,17 @@
 
 function addToLibrary (media){
-  
   library.push(media);
   console.log(library);
   return library
 }
 
-
 function renderLibrary(){
   const libraryContainer = document.getElementById("container--library");
-  libraryContainer.innerHTML = "";
+
+
+  // libraryContainer.innerHTML = "";
+  while (libraryContainer.firstChild) 
+    {libraryContainer.removeChild(libraryContainer.firstChild)}
   library.map((item) => {
     const mediaDiv = document.createElement("div");
     mediaDiv.setAttribute("id", `item${item.id}`);
@@ -33,6 +35,21 @@ const removeMedia = (itemId)=> {
 
 let library = []
 
+
+export {addToLibrary, renderLibrary}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function saveLocal() {
 //   localStorage.setItem('books', JSON.stringify(library))
 //   localStorage.setItem('id', JSON.stringify(idCounter))
@@ -52,8 +69,3 @@ let library = []
 //     idCounter = 0
 //   }
 // }
-
-
-export  {addToLibrary, renderLibrary}
-
-

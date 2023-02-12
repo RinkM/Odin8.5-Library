@@ -2,7 +2,8 @@ import './style.css'
 import {bookSearch, gameSearch} from './src/bookApi';
 import {movieSearch} from './src/movieApi';
 import createMediaObject from './src/createMediaObject';
-import {renderMediaDetails, renderLibrary} from './src/domScript';
+import renderMediaDetails from './src/domScript';
+
 
 const movieInput = document.getElementById("searchInput--movie");
 const bookInput = document.getElementById("searchInput--book");

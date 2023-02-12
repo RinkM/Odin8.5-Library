@@ -30,13 +30,14 @@ function renderMediaDetails (libraryItem) {
 
   
   addMediaBtn.addEventListener('click', () => {
+    console.log("render", libraryItem)
     addToLibrary(libraryItem);
     renderLibrary();
   })
 
 }
 
-export {renderMediaDetails, renderLibrary}
+export default renderMediaDetails
 
 
 

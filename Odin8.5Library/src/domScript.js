@@ -7,6 +7,8 @@ import {addToLibrary, renderLibrary} from "./library"
 function renderMediaDetails (libraryItem) {
   const container = document.getElementById("container--mediaDetails")
   container.classList.remove("hidden")
+  container.classList.remove("hiddenVisibility")
+  
 
   const mediaImage = document.getElementById("mediaDetails--image")
   mediaImage.src = libraryItem.imageSource
@@ -24,7 +26,7 @@ function renderMediaDetails (libraryItem) {
   }
   const addMediaBtn = document.createElement("button");
   addMediaBtn.setAttribute("id", "addMediaBtn")
-  addMediaBtn.innerText = "Adds"
+  addMediaBtn.innerText = "Add"
 
   container.appendChild(addMediaBtn)
 
@@ -37,7 +39,50 @@ function renderMediaDetails (libraryItem) {
 
 }
 
-export default renderMediaDetails
+function addButtons(){
+
+  const buttonTypes = ["Book", "Movie", "Game"];
+
+  buttonTypes.map((type)=>{
+    const button = document.createElement("button");
+    button.setAttribute("id", `add${type}`);
+    button.textContent = `Add ${type}`;
+    button.classList.add("addButton");
+    const container = document.getElementById("container--buttons");
+    container.appendChild(button);
+
+    function hideAllSearch(){
+      const search = document.getElementById("search");
+      [...search.children].forEach(element => {
+        element.classList.add("hidden")
+      });
+    };
+
+    function showSearch(type){
+      const searchContainer = document.getElementById(`searchContainer--${type}`)
+      console.log(searchContainer)
+      searchContainer.classList.remove("hidden")
+    };
+
+    button.addEventListener("click", () => {
+      hideAllSearch();
+      showSearch(type);
+      
+    })
+
+    
+    
+  })
+
+
+  
+
+
+}
+
+
+
+export {renderMediaDetails, addButtons}
 
 
 

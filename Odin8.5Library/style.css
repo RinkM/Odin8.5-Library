@@ -32,7 +32,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -90,10 +89,20 @@ button:focus-visible {
 
 #container--top{
   display: flex;
+
+}
+
+#container--search{
+  margin:10px;
+
+}
+
+#search{
+  margin:.8em;
 }
 
 .searchContainer {
-  display: flex;
+  margin:auto;
   height: auto;
 
 }
@@ -103,22 +112,24 @@ button:focus-visible {
   width:250px;
 
 }
-
-.searchResult{
+.searchResults{
+  height: 10em;
   text-align: left;
-  margin:2px;
+  margin:auto;
+  border:black solid 2pt;
+  border-radius: 5px;
+  padding:5px;
 }
+
 
 .searchResult:hover{
   border: 1px solid blue;
   margin: 1px;
 }
-.searchResults{
-  height: 8em;
-  width: 700px;
-}
+
 
 #container--mediaDetails{
+  width: 420px;
   padding:10px;
   border:#1a1a1a solid 2pt;
   
@@ -131,6 +142,9 @@ button:focus-visible {
   display: none;
 }
 
+.hiddenVisibility{
+  visibility: hidden;
+}
 
 #mediaDetails--image{
   width:180px;
@@ -150,9 +164,42 @@ button:focus-visible {
   display:flex;
   /* height:200px;
   width: 200px; */
+  position: relative;
   
 }
 .libraryImage{
   max-width: 250px;
   max-height: 200px;
+  z-index: -1;
+  
+}
+
+.libraryItem::after{
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.6) 100%) repeat 0 0;
+
+}
+
+
+.libraryItemText{
+  font-weight: 500;
+  font-size: 1.5em;
+  color:white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.greyScale{
+  filter: blur(2px) brightness(.6)
+}
+
+#textContainer{
+
+
+}
+.thumbText{position: relative;
+
+
 }

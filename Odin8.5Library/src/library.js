@@ -28,6 +28,12 @@ function renderLibrary(){
   while (libraryContainer.firstChild) 
     {libraryContainer.removeChild(libraryContainer.firstChild)}
   library.map((item) => {
+
+    let finishedStatus;
+    if (item.consumedStatus){
+      finishedStatus = "Yes"
+    }
+    else {finishedStatus = "Not Yet"}
     const mediaDiv = document.createElement("div");
     mediaDiv.setAttribute("id", `item${item.id}`);
     mediaDiv.classList.add("libraryItem")
@@ -45,7 +51,7 @@ function renderLibrary(){
     const consumedText = document.createElement("p");
     consumedText.setAttribute("id", `text${item.id}`);
     consumedText.classList.add("thumbText")
-    consumedText.textContent = `Finished: ${item.consumedStatus}`
+    consumedText.textContent = `Finished: ${finishedStatus}`
 
     textContainer.appendChild(titleText)
     textContainer.appendChild(consumedText)

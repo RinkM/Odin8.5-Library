@@ -2,9 +2,9 @@ import './style.css'
 import {bookSearch, gameSearch} from './src/bookApi';
 import {movieSearch} from './src/movieApi';
 import createMediaObject from './src/createMediaObject';
-import renderMediaDetails from './src/domScript';
+import {renderMediaDetails, addButtons} from './src/domScript';
 
-
+addButtons()
 const movieInput = document.getElementById("searchInput--movie");
 const bookInput = document.getElementById("searchInput--book");
 const gameInput = document.getElementById("searchInput--game");
@@ -31,7 +31,6 @@ async function gameButton(){
   
 }
 
-
 async function movieButton(){
   const searchInput = document.getElementById("searchInput--movie");
   const searchValue = getSearchValue(searchInput);
@@ -39,6 +38,8 @@ async function movieButton(){
   renderSearchResults(movieResults)
   console.log(movieResults)
 }
+
+
 
 function getSearchValue (input){
   return input.value
@@ -116,3 +117,25 @@ function shortenDate (date){
   const shortDate = date.slice(0,4)
   return shortDate
 }
+
+function setUpHeaderButtons(){
+  const addMediaBtn = document.getElementById(headerAddBtn)
+                                                                           
+  addMediaBtn.addEventListener("click", function openSeach(){
+    const searchContainer = document.getElementById("container--top");
+    searchContainer.classList.remove()
+})
+}
+
+
+
+
+//   const buttons = ["Add", "Edit"];
+//   buttons.map((btn) => {
+//     const button = document.createElement("button");
+//     button.id = `header--${btn}Media`;
+//     button.textContent = `${btn} Media`
+
+//   })
+
+// }

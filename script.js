@@ -96,7 +96,7 @@ class Media {
 }
 
 // dummy data used while testing. 
-let library = [{
+let library2 = [{
     mediaType:"book",
     itemId:0,
     title:"The Hobbit",

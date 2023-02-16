@@ -1,9 +1,24 @@
 
+import { makeDelButton } from "./domScript";
+
+
 function addToLibrary (media){
   library.push(media);
   console.log(library);
   return library
 }
+const removeMedia = (divId)=> {
+  console.log(divId)
+  const id = divId.split("item")[1]
+  const index = library.findIndex(media=> {
+    return media.id == id
+  })
+  library.splice(index,1)
+  console.log(library)
+  renderLibrary()
+}
+
+
 
 function renderLibrary(){
   const libraryContainer = document.getElementById("container--library");
@@ -53,19 +68,13 @@ function renderLibrary(){
       image.classList.remove("greyScale")
     })
 
+    mediaDiv.appendChild(makeDelButton())
+
 })
 }
 
 
 
-const removeMedia = (itemId)=> {
-  const index = library.findIndex(media=> {
-    return media.itemId == itemId
-  })
-  library.splice(index,1)
-  resetCards();
-  cardMaker();
-}
 
 let library = [
   {
@@ -157,7 +166,7 @@ let library = [
 ]
 
 
-export {addToLibrary, renderLibrary}
+export {addToLibrary, renderLibrary, removeMedia}
 
 
 

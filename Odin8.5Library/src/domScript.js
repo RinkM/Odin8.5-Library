@@ -44,6 +44,9 @@ function closeSearchWindow(){
 
 
 function renderMediaDetails (libraryItem) {
+  const slider = document.getElementById("consumedSlider")
+  slider.classList.remove("hidden")
+  
   const container = document.getElementById("container--mediaDetails")
   container.classList.remove("hidden")
   container.classList.remove("hiddenVisibility")

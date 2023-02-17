@@ -18,7 +18,32 @@ const removeMedia = (divId)=> {
   renderLibrary()
 }
 
+function createSlider(item){
+  const containerSlider = document.createElement("div");
+  containerSlider.setAttribute("id", `slider${item.id}`);
+  containerSlider.classList.add("hidden");
 
+  const labelSlider = document.createElement("label");
+  labelSlider.classList.add("switch")
+
+  const checkBox = document.createElement("input");
+  checkBox.setAttribute("type", "checkbox")
+  checkBox.setAttribute("id", `input${item.id}`)
+  checkBox.classList.add("checkbox");
+
+  const spanSlider = document.createElement("span");
+  spanSlider.classList.add("slider")
+  spanSlider.classList.add("round")
+
+  labelSlider.appendChild(checkBox)
+  labelSlider.appendChild(spanSlider)
+
+  containerSlider.appendChild(labelSlider)
+
+  return containerSlider
+
+
+}
 
 function renderLibrary(){
   const libraryContainer = document.getElementById("container--library");
@@ -51,7 +76,8 @@ function renderLibrary(){
     const consumedText = document.createElement("p");
     consumedText.setAttribute("id", `text${item.id}`);
     consumedText.classList.add("thumbText")
-    consumedText.textContent = `Finished: ${finishedStatus}`
+    consumedText.textContent = `Finished:`
+    consumedText.appendChild(createSlider(item))
 
     textContainer.appendChild(titleText)
     textContainer.appendChild(consumedText)

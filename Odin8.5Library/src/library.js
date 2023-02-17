@@ -21,7 +21,7 @@ const removeMedia = (divId)=> {
 function createSlider(item){
   const containerSlider = document.createElement("div");
   containerSlider.setAttribute("id", `slider${item.id}`);
-  containerSlider.classList.add("hidden");
+  // containerSlider.classList.add("");
 
   const labelSlider = document.createElement("label");
   labelSlider.classList.add("switch")
@@ -68,19 +68,21 @@ function renderLibrary(){
     textContainer.classList.add("libraryItemText")
     textContainer.classList.add("hidden")
 
-    const titleText = document.createElement("p");
-    titleText.setAttribute("id", `text${item.id}`);
+    const titleText = document.createElement("div");
+    titleText.setAttribute("id", `title${item.id}`);
     titleText.classList.add("thumbText")
     titleText.textContent = `${item.title}`
 
-    const consumedText = document.createElement("p");
-    consumedText.setAttribute("id", `text${item.id}`);
+    const consumedText = document.createElement("div");
+    consumedText.setAttribute("id", `consumed${item.id}`);
     consumedText.classList.add("thumbText")
     consumedText.textContent = `Finished:`
-    consumedText.appendChild(createSlider(item))
+    const slider = createSlider(item)
+    
 
     textContainer.appendChild(titleText)
     textContainer.appendChild(consumedText)
+    textContainer.appendChild(slider)
     
     const image = document.createElement("img");
     image.src = item.imageSource;

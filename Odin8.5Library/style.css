@@ -176,6 +176,9 @@ button:focus-visible {
   justify-content: center;
 }
 
+
+
+
 .libraryItem{
   margin:5px;
   max-width: 250px;
@@ -184,14 +187,22 @@ button:focus-visible {
   /* height:200px;
   width: 200px; */
   position: relative;
-  
 }
+
+.libraryItem:hover{
+  transform: scale(1.1);
+  transition: all .4s ease-out;
+}
+
+
+
 .libraryImage{
   max-width: 250px;
   max-height: 165px;
   z-index: -1;
   
 }
+
 
 .libraryItemText{
   font-weight: 500;
@@ -205,16 +216,10 @@ button:focus-visible {
 
 
 .greyScale{
-  filter: blur(2px) brightness(.6)
+  filter: blur(1px) brightness(.5)
 }
 
-#textContainer{
-
-
-}
 .thumbText{position: relative;
-
-
 }
 
 #cancelMediaBtn{

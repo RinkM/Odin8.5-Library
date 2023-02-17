@@ -1,4 +1,12 @@
-import { getMovieDetails, getMoviePoster } from "./movieApi"
+import { getMovieDetails } from "./apiScript"
+
+
+function getMoviePoster (path){
+  const urlStart = "http://image.tmdb.org/t/p/";
+  const size = "/w154";
+  const posterUrl = `${urlStart}${size}${path}`
+  return posterUrl
+}
 
 async function createMediaObject (item) {
   

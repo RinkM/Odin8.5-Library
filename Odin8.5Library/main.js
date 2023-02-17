@@ -1,8 +1,9 @@
 import './style.css'
-import {bookSearch, gameSearch} from './src/bookApi';
-import {movieSearch} from './src/movieApi';
+import {bookSearch, gameSearch, movieSearch} from './src/apiScript';
+// import {movieSearch} from './src/movieApi';
 import {renderSearchResults, addButtons} from './src/domScript';
 import {renderLibrary} from './src/library';
+
 
 renderLibrary()
 addButtons()

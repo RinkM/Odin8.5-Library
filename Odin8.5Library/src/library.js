@@ -45,13 +45,46 @@ function createSlider(item){
 
 }
 
-function renderLibrary(){
-  const libraryContainer = document.getElementById("container--library");
+
+function filterLibrary (){
+  const buttonTypes = ["Book", "Movie", "Game"];
+
+  const filteredBooks = library.filter(item => item.mediaType == "book")
+  const filteredMovies = library.filter(item => item.mediaType == "movie")
+  const filteredGames = library.filter(item => item.mediaType == "game")
+
+  const libraryBooks = document.getElementById("library--books");
+  const libraryMovies = document.getElementById("library--movies");
+  const libraryGames = document.getElementById("library--games");
+
+  
+
+  while (libraryBooks.firstChild) 
+    {libraryBooks.removeChild(libraryBooks.firstChild)}
+
+    while (libraryMovies.firstChild) 
+    {libraryMovies.removeChild(libraryMovies.firstChild)}
+    
+    while (libraryGames.firstChild) 
+    {libraryGames.removeChild(libraryGames.firstChild)}
+
+  renderLibrary(libraryBooks, filteredBooks)
+  renderLibrary(libraryMovies, filteredMovies)
+  renderLibrary(libraryGames, filteredGames)
+  
+}
 
 
-  // libraryContainer.innerHTML = "";
-  while (libraryContainer.firstChild) 
-    {libraryContainer.removeChild(libraryContainer.firstChild)}
+
+
+
+
+function renderLibrary(libraryContainer, library){
+  console.log(libraryContainer)
+
+  // const libraryContainer = document.getElementById("container--library");
+
+  
   library.map((item) => {
 
     let finishedStatus;
@@ -113,7 +146,7 @@ function renderLibrary(){
 let library = [
   {
       "id": 1676358022094,
-      "mediaData": "book",
+      "mediaType": "book",
       "title": "The Night Circus",
       "maker": [
           "Erin Morgenstern"
@@ -125,7 +158,7 @@ let library = [
   },
   {
       "id": 1676358033182,
-      "mediaData": "book",
+      "mediaType": "book",
       "title": "Red Rising",
       "maker": [
           "Pierce Brown"
@@ -137,7 +170,7 @@ let library = [
   },
   {
       "id": 1676358070744,
-      "mediaData": "book",
+      "mediaType": "book",
       "title": "Leviathan Wakes",
       "maker": [
           "James S. A. Corey"
@@ -149,7 +182,7 @@ let library = [
   },
   {
       "id": 1676358081206,
-      "mediaData": "movie",
+      "mediaType": "movie",
       "title": "Blade Runner",
       "maker": "",
       "year": "1982-06-25",
@@ -159,7 +192,7 @@ let library = [
   },
   {
       "id": 1676358083500,
-      "mediaData": "movie",
+      "mediaType": "movie",
       "title": "Blade Runner 2049",
       "maker": "",
       "year": "2017-10-04",
@@ -169,7 +202,7 @@ let library = [
   },
   {
       "id": 1676358115996,
-      "mediaData": "movie",
+      "mediaType": "movie",
       "title": "Up",
       "maker": "",
       "year": "2009-05-28",
@@ -179,7 +212,7 @@ let library = [
   },
   {
       "id": 1676358130059,
-      "mediaData": "game",
+      "mediaType": "game",
       "title": "Donkey Kong 64",
       "maker": "",
       "year": "1999-11-22",
@@ -189,18 +222,41 @@ let library = [
   },
   {
       "id": 1676358161370,
-      "mediaData": "game",
+      "mediaType": "game",
       "title": "Sonic the Hedgehog 2",
       "maker": "",
       "year": "1992-11-21",
       "imageSource": "https://media.rawg.io/media/screenshots/4ca/4ca52a75bc88b162271545064b0c811f.jpg",
       "consumedStatus": false,
       "review": 2
+  },
+  {
+      "id": 1676674745977,
+      "mediaType": "game",
+      "title": "Halo: Reach",
+      "maker": "",
+      "year": "2010-09-14",
+      "imageSource": "https://media.rawg.io/media/screenshots/36e/36e2b35282b7a413dae48789ffbd6651.jpg",
+      "consumedStatus": false,
+      "review": 2
+  },
+  {
+      "id": 1676674782639,
+      "mediaType": "movie",
+      "title": "Army of Darkness",
+      "maker": "",
+      "year": "1992-10-31",
+      "imageSource": "http://image.tmdb.org/t/p//w154/xsgTuAtR2zSH8Umg3jWZcZjlDpe.jpg",
+      "consumedStatus": false,
+      "review": 2
   }
 ]
 
 
-export {addToLibrary, renderLibrary, removeMedia}
+
+
+
+export {addToLibrary, renderLibrary, removeMedia, filterLibrary}
 
 
 

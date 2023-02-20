@@ -1,4 +1,4 @@
-
+import { renderSearchResults } from "./domScript";
 const movieApi = "38e8b2e2ac2be3f92ce69d44aef52eef";
 
 async function movieSearch (searchTerm){
@@ -59,8 +59,41 @@ async function gameSearch (searchTerm){
   return fiveGameItems
 }
 
+function fiveGameItems (results){
+  // 
+  results.map(game => {console.log(game.name)})
 
 
+  return results
+}
+
+function gameSearch2 (searchTerm){
+    const giantBombApi = "8e5e059328164c0cc70ef6f32294a61fcf58fa1c";
+    const giantBombSearchUrl = `https://www.giantbomb.com/api/search/?api_key=${giantBombApi}&query=${searchTerm}&limit=5&format=jsonp&json_callback=json_callback`;
+    return $.ajax({
+      url: giantBombSearchUrl,
+      type: "GET",
+      dataType: "jsonp",
+      crossDomain:true,
+      jsonp:"json_callback",
+      
+      success: function(results){
+        fiveGameItems(results.results)
+        renderSearchResults(results.results)
+
+        
+        // console.log("searchResults for ",searchTerm, results.results);
+          // results.results.map(item => console.log(item.image_tags))
+          // results.results = returns 5 items.    it should just return them so I can use the info...
+          // console.log(getGameArtFilterUrl(results.results[0])) 
+     },
+      error: function(result){
+        console.log("SearchGiantBomb Error", result);
+     },
+    });
+  
+  }
+  
 
 
 
@@ -68,5 +101,6 @@ export {
   bookSearch, 
   gameSearch, 
   movieSearch, 
-  getMovieDetails
+  getMovieDetails,
+  gameSearch2, 
 }

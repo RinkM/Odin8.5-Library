@@ -31,6 +31,21 @@ Revision.
 
 Changes include...
 
+TODO Feb 17 2023
+organize the types.  games with games etc.   does this mean I need to add something to library...
+
+API CALLS:
+Does a search to Movie API and gathers some information. makes a second call for movie poster information.
+
+uses GoogleBooks API to get all information about the books.
+
+Tried 4 different API services for Games.
+Tried IMVD g
+Tried GiantBomb - Used Jquery and JSONP (Javacript With Padding) to gain information.
+Tried Rawg - get game info, but doesn't return the correct box-art. They don't have it.
+Tried Twitch.
+
+
 How the app works : 
 1) app displays the data in the library. Builds a card for each item. *library includes img of the item. *
 2) on Add Media button press, form opens.  Select media type. New form to fill in the item and information.

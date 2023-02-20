@@ -25,7 +25,7 @@ async function createMovieObject(item){
   let details = await getMovieDetails(item.id)
   let libraryItem = {
     id : Date.now(), 
-    mediaData : "movie",
+    mediaType : "movie",
     title : item.title,
     maker : "",
     year : item.release_date,
@@ -41,7 +41,7 @@ async function createMovieObject(item){
 async function createBookObject(item){
   let libraryItem = {
     id : Date.now(), 
-    mediaData : "book",
+    mediaType : "book",
     title : item.volumeInfo.title,
     maker : item.volumeInfo.authors,
     year : item.volumeInfo.publishedDate,
@@ -57,7 +57,7 @@ async function createGameObject(item){
     console.log(details)
     const libraryItem = {
     id : Date.now(), 
-    mediaData : "game",
+    mediaType : "game",
     title : item.name,
     maker : "",
     year : item.released,

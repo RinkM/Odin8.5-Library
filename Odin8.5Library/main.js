@@ -1,11 +1,30 @@
 import './style.css'
-import {bookSearch, gameSearch, movieSearch} from './src/apiScript';
+import {bookSearch, gameSearch, movieSearch, gameSearch2} from './src/apiScript';
 // import {movieSearch} from './src/movieApi';
 import {renderSearchResults, addButtons} from './src/domScript';
-import {renderLibrary} from './src/library';
+import {filterLibrary} from './src/library';
 
 
-renderLibrary()
+function myFunction () {
+  $.ajax({
+      url: testUrl,
+      type: "GET",
+      dataType: "jsonp",
+      crossDomain:true,
+      jsonp:"json_callback",
+      success: function(result){
+      console.log(result)
+  },
+  
+  error: function(result){
+  console.log("Error");
+  },
+  })
+  ;
+}
+
+
+filterLibrary()
 addButtons()
 const movieInput = document.getElementById("searchInput--movie");
 const bookInput = document.getElementById("searchInput--book");
@@ -27,10 +46,13 @@ async function bookButton() {
 async function gameButton(){
   const searchInput = document.getElementById("searchInput--game");
   const searchValue = getSearchValue(searchInput);
-  const gameResults =  await gameSearch(searchValue);
+  const gameResults =  gameSearch2(searchValue);
+  // gameResults.success(data => console.log(data))
   console.log(gameResults)
+  console.log(gameResults.promise())
+
   renderSearchResults(gameResults)
-  
+
 }
 
 async function movieButton(){
@@ -46,3 +68,7 @@ async function movieButton(){
 function getSearchValue (input){
   return input.value
 }
+
+
+
+

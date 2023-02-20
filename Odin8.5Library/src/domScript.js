@@ -1,6 +1,6 @@
 
 import createMediaObject from "./createMediaObject"
-import {addToLibrary, renderLibrary, removeMedia} from "./library"
+import {addToLibrary, filterLibrary, removeMedia} from "./library"
 
 function clearInputValues (){
 const inputs = [...document.getElementsByClassName("searchInput")]
@@ -36,7 +36,6 @@ function openSearchWindow(){
 
 function closeSearchWindow(){
   const searchContainer = document.getElementById("container--top");
-  console.log("test")
   searchContainer.classList.remove("flex");
   searchContainer.classList.add("hidden");
 }
@@ -72,11 +71,9 @@ function renderMediaDetails (libraryItem) {
   container.appendChild(addMediaBtn)
 
   addMediaBtn.addEventListener('click', () => {
-    console.log("render", libraryItem)
     addToLibrary(libraryItem);
-    renderLibrary();
+    filterLibrary();
     closeSearchWindow();
-
   })
 
 }
@@ -88,7 +85,7 @@ function addButtons(){
   buttonTypes.map((type)=>{
     const button = document.createElement("button");
     button.setAttribute("id", `add${type}`);
-    button.textContent = `Add ${type}`;
+    button.textContent = `Search ${type}s`;
     button.classList.add("addButton");
     const container = document.getElementById("container--buttons");
     container.appendChild(button);
@@ -126,7 +123,7 @@ function renderSearchResults (items){
     
     searchResult.addEventListener("click", async function selectMedia(){
       const mediaObject = await createMediaObject(item)
-      console.log("mediaObject", mediaObject)
+
       renderMediaDetails(mediaObject)
     })
     if (item.title){
@@ -139,6 +136,14 @@ function renderSearchResults (items){
         const shortTitle = shortenText(item.name)
         const year = shortenDate(item.released)
         searchResult.textContent = `${shortTitle} (${year})`
+      } else if (item.guid) {
+        console.log("fromRenderSearch",item)
+        const gameId = item.guid
+        const shortTitle = shortenText(item.name)
+        if (item.original_release_date){
+          const year = shortenDate(item.original_release_date)
+          searchResult.textContent = `${shortTitle} (${year})`
+        } else {searchResult.textContent = `${shortTitle}`}
       } else {
       const shortTitle = shortenText(item.volumeInfo.title)
       const shortAuthor = shortenText(combineAuthors(item.volumeInfo.authors))
@@ -210,7 +215,7 @@ function cardShake(){
 function resetShake(){
   const libraryItems = [...document.getElementsByClassName("libraryItem")]
   libraryItems.map(card => {
-      console.log(card.style.animation)
+
       card.style.removeProperty('animation')
         }
       )
@@ -229,18 +234,15 @@ function editPress (){
     }
   )
   if (Array.from(delClasses).indexOf('hidden') == true){
-    console.log('hidden is true')
     resetShake()
     
   } else {
-    console.log('hidden is false')
     cardShake()
   }
   }
 
 function trashButton (evt){
    const selection = evt.target.parentElement.parentElement.id;
-   console.log(selection)
    removeMedia(selection)
 }
 
@@ -513,7 +515,6 @@ function resetCards(){
 
 function clickAway (evt){
   const selection = evt.target;
-  console.log(selection)
 }
 
 window.addEventListener('click', clickAway) 

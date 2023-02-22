@@ -114,7 +114,12 @@ function renderSearchResults (items){
 
    removeOldResults()
    const autoComplete = document.getElementById("searchAutoComplete");
-
+  console.log("items", items)
+  // !for game, it errors, but still does the mapping.  I'm not sure how to fix.
+  // has to do with the promise being passed, but it no longer it.  It passes an array of stuff...
+  // it thinks its a promise?   maybe...
+  // but acts like an array...    is it the ajax?  can I make it work as a fetch?
+  
   items.map((item) => {
     
     const searchResult = document.createElement("div")
@@ -122,10 +127,12 @@ function renderSearchResults (items){
     searchResult.classList.add("searchResult");
     
     searchResult.addEventListener("click", async function selectMedia(){
-      const mediaObject = await createMediaObject(item)
+      const mediaObject = await createMediaObject(item);
 
-      renderMediaDetails(mediaObject)
+      
+      renderMediaDetails(mediaObject);
     })
+
     if (item.title){
       const movieId = item.id
       const shortTitle = shortenText(item.title)

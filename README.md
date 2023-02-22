@@ -29,6 +29,16 @@ From Odin
 ## Notes Jan 30 2023
 Revision. 
 
+# Feb 22
+the add button shows books AND games problem
+the delete doesn't work
+fix the consumed toggle
+nightmode issues
+remove the header colors. 
+improve the header. give title.  ADD A FOX?  Squirrel?
+
+
+
 Changes include...
 
 TODO Feb 17 2023
@@ -43,7 +53,7 @@ Tried 4 different API services for Games.
 Tried IMVD g
 Tried GiantBomb - Used Jquery and JSONP (Javacript With Padding) to gain information.
 Tried Rawg - get game info, but doesn't return the correct box-art. They don't have it.
-Tried Twitch.
+Tried Twitch.  
 
 
 How the app works : 

@@ -43,15 +43,23 @@ async function bookButton() {
   renderSearchResults(bookResults)
 } 
 
+
+// takes the full promise and simplifies it into an array of game items.
+// let games = results.results.filter(item =>{item.api_detail_url.startsWith("https://www.giantbomb.com/api/game")});
+// sends 5 items through rendersearch results. 
 async function gameButton(){
   const searchInput = document.getElementById("searchInput--game");
   const searchValue = getSearchValue(searchInput);
-  const gameResults =  gameSearch2(searchValue);
-  // gameResults.success(data => console.log(data))
-  console.log(gameResults)
-  console.log(gameResults.promise())
+  gameSearch2(searchValue).then(
+    (results) => {
+      let games = results.results.filter((item) => item.resource_type == "game")
+      renderSearchResults(games.slice(0,5));
+    },
+    (reason) =>{
+      console.error(reason)
+    },
+  );
 
-  renderSearchResults(gameResults)
 
 }
 

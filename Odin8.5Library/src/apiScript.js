@@ -60,17 +60,16 @@ async function gameSearch (searchTerm){
 }
 
 function fiveGameItems (results){
-  // 
-  results.map(game => {console.log(game.name)})
-
-
-  return results
+  let fiveItems = [] 
+  results.map(game => {fiveItems.push(game)})
+  console.log(fiveItems)
+  return fiveItems
 }
 
 function gameSearch2 (searchTerm){
     const giantBombApi = "8e5e059328164c0cc70ef6f32294a61fcf58fa1c";
-    const giantBombSearchUrl = `https://www.giantbomb.com/api/search/?api_key=${giantBombApi}&query=${searchTerm}&limit=5&format=jsonp&json_callback=json_callback`;
-    return $.ajax({
+    const giantBombSearchUrl = `https://www.giantbomb.com/api/search/?api_key=${giantBombApi}&query=${searchTerm}&limit=20&format=jsonp&json_callback=json_callback`;
+    return Promise.resolve($.ajax({
       url: giantBombSearchUrl,
       type: "GET",
       dataType: "jsonp",
@@ -78,21 +77,57 @@ function gameSearch2 (searchTerm){
       jsonp:"json_callback",
       
       success: function(results){
-        fiveGameItems(results.results)
-        renderSearchResults(results.results)
-
-        
-        // console.log("searchResults for ",searchTerm, results.results);
-          // results.results.map(item => console.log(item.image_tags))
-          // results.results = returns 5 items.    it should just return them so I can use the info...
-          // console.log(getGameArtFilterUrl(results.results[0])) 
+        // // takes the full promise and simplifies it into an array of game items.
+        // let games = results.results.filter(item =>{item.api_detail_url.startsWith("https://www.giantbomb.com/api/game")});
+        // // sends 5 items through rendersearch results. 
+        // renderSearchResults(games.slice[0,5]);
+        // // ?renderSearchResults(results.results)
      },
       error: function(result){
         console.log("SearchGiantBomb Error", result);
      },
-    });
+    }));
   
   }
+  
+
+  
+  function getBoxArt(url){
+    // const giantBombSearchUrl = `https://www.giantbomb.com/api/search/?api_key=${giantBombApi}&query=${searchTerm}&limit=5&format=jsonp&json_callback=json_callback`;
+    return Promise.resolve($.ajax({
+      url: url,
+      type: "GET",
+      dataType: "jsonp",
+      crossDomain:true,
+      jsonp:"json_callback",
+      success: function(results){
+        console.log("getBoxArt for", results.results[0].medium_url);
+          // results.results.map(item => console.log(item.image_tags))
+        return results.results
+     },
+      error: function(result){
+        console.log("getBoxArt Error", result);
+     },
+    }));
+  }
+  
+function boxArtUrlMaybe (){
+  getBoxArt().then(
+    (results) => {
+      console.log(results)
+      
+      
+      
+      let games = results.results.filter((item) => item.resource_type == "game")
+      renderSearchResults(games.slice(0,5));
+    },
+    (reason) =>{
+      console.error(reason)
+    },
+  );
+
+
+}
   
 
 
@@ -103,4 +138,5 @@ export {
   movieSearch, 
   getMovieDetails,
   gameSearch2, 
+  getBoxArt
 }

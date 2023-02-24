@@ -9,9 +9,11 @@ inputs.map(input =>{input.value = ""})
 
 const addMediaBtn = document.getElementById("headerAddBtn")
 addMediaBtn.addEventListener("click", () => {
+  hideAllSearchInputs();
   openSearchWindow();
   clearInputValues();
   hideTrashBtn();
+
 })
 
 
@@ -78,6 +80,13 @@ function renderMediaDetails (libraryItem) {
 
 }
 
+function hideAllSearchInputs(){
+  const search = document.getElementById("search");
+  [...search.children].forEach(element => {
+    element.classList.add("hidden")
+  });
+};
+
 function addButtons(){
 
   const buttonTypes = ["Book", "Movie", "Game"];
@@ -90,15 +99,8 @@ function addButtons(){
     const container = document.getElementById("container--buttons");
     container.appendChild(button);
 
-    function hideAllSearch(){
-      const search = document.getElementById("search");
-      [...search.children].forEach(element => {
-        element.classList.add("hidden")
-      });
-    };
-
     button.addEventListener("click", () => {
-      hideAllSearch();
+      hideAllSearchInputs();
       showSearchInput(type);
     })
   })

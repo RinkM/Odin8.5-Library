@@ -232,7 +232,6 @@ function resetShake(){
     editBtn.addEventListener("click", editPress)
 
 function editPress (){
-  // returnScreen()
   const delDiv = document.getElementsByClassName("delCard")
   const allDel = Array.from(delDiv);
   const delClasses = allDel[0].classList;
@@ -250,6 +249,7 @@ function editPress (){
 
 function trashButton (evt){
    const selection = evt.target.parentElement.parentElement.id;
+   console.log(selection)
    removeMedia(selection)
 }
 

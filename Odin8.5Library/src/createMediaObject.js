@@ -1,4 +1,4 @@
-import { getMovieDetails, getBoxArt } from "./apiScript"
+import { getMovieDetails } from "./apiScript"
 
 
 function getMoviePoster (path){

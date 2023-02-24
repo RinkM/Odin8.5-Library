@@ -7,15 +7,13 @@ function addToLibrary (media){
   console.log(library);
   return library
 }
-const removeMedia = (divId)=> {
-  console.log(divId)
+function removeMedia (divId) {
   const id = divId.split("item")[1]
   const index = library.findIndex(media=> {
     return media.id == id
   })
   library.splice(index,1)
-  console.log(library)
-  renderLibrary()
+  filterLibrary()
 }
 
 function createSlider(item){
@@ -47,6 +45,7 @@ function createSlider(item){
 
 
 function filterLibrary (){
+  console.log(library)
   const buttonTypes = ["Book", "Movie", "Game"];
 
   const filteredBooks = library.filter(item => item.mediaType == "book")
@@ -80,7 +79,7 @@ function filterLibrary (){
 
 
 function renderLibrary(libraryContainer, library){
-  console.log(libraryContainer)
+  // console.log(libraryContainer)
 
   // const libraryContainer = document.getElementById("container--library");
 

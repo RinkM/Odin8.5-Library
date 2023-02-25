@@ -16,32 +16,102 @@ function removeMedia (divId) {
   filterLibrary()
 }
 
-function createSlider(item){
-  const containerSlider = document.createElement("div");
-  containerSlider.setAttribute("id", `slider${item.id}`);
-  // containerSlider.classList.add("");
 
-  const labelSlider = document.createElement("label");
-  labelSlider.classList.add("switch")
+function setAttributes(element, attributes) {
+  Object.keys(attributes).forEach(attr => {
+    element.setAttribute(attr, attributes[attr]);
+  });
+}
 
+
+
+function createCheckBox(item){
+
+  const inputSettings = {
+  "type" : "checkbox",
+  "id" : `checkBox${item.id}`,
+  "class" : "checkBox",
+  "name" : `checkBox${item.id}`,
+  }
+  const labelSettings = {
+    "for" : `checkBox${item.id}`,
+    "class" : "checkBoxLabel"
+  }
+  // <input type="checkbox" id="coding" name="interest" value="coding" checked />
+  // <label for="coding">Coding</label>
+  
+  const containerCheckBox = document.createElement("div");
+  const labelCheckBox = document.createElement("label");
   const checkBox = document.createElement("input");
-  checkBox.setAttribute("type", "checkbox")
-  checkBox.setAttribute("id", `input${item.id}`)
-  checkBox.classList.add("checkbox");
 
-  const spanSlider = document.createElement("span");
-  spanSlider.classList.add("slider")
-  spanSlider.classList.add("round")
+  containerCheckBox.setAttribute("id", `checkBoxDiv${item.id}`);
+  containerCheckBox.setAttribute("class", "checkBoxDiv");
+  labelCheckBox.innerText = "Finished"
 
-  labelSlider.appendChild(checkBox)
-  labelSlider.appendChild(spanSlider)
+  
+  setAttributes(labelCheckBox, labelSettings)
+  setAttributes(checkBox, inputSettings)
+  containerCheckBox.appendChild(labelCheckBox);
+  containerCheckBox.appendChild(checkBox)
+  checkBox.checked = item.consumedStatus
+  checkBox.addEventListener("input", ()=> finished(checkbox, item))
 
-  containerSlider.appendChild(labelSlider)
+  
 
-  return containerSlider
+  return containerCheckBox
 
 
 }
+
+
+
+function finished (checkbox, item){
+  console.log(checkbox)
+  console.log(item)
+
+
+// the checkbox returns checked true each time.... don't knwo why.
+// the item  is the correct item... how to match them?
+
+
+// checkbox has a check value. true or false.
+// find the item in the library.
+
+
+
+// const id = divId.split("checkBox")[1]
+// const index = library.findIndex(media=> {
+//   return media.id == id
+// })
+
+// library[index].consumedStatus = checkbox.checked
+
+
+
+
+}
+
+
+
+// const selection = evt.target.parentElement.parentElement.id;
+// console.log(selection)
+// removeMedia(selection)
+
+
+// function removeMedia (divId) {
+//   const id = divId.split("item")[1]
+//   const index = library.findIndex(media=> {
+//     return media.id == id
+//   })
+//   library.splice(index,1)
+//   filterLibrary()
+// }
+
+
+
+
+
+
 
 
 function filterLibrary (){
@@ -105,16 +175,14 @@ function renderLibrary(libraryContainer, library){
     titleText.classList.add("thumbText")
     titleText.textContent = `${item.title}`
 
-    const consumedText = document.createElement("div");
-    consumedText.setAttribute("id", `consumed${item.id}`);
-    consumedText.classList.add("thumbText")
-    consumedText.textContent = `Finished:`
-    const slider = createSlider(item)
+
+
+    
+    const checkBox = createCheckBox(item)
     
 
     textContainer.appendChild(titleText)
-    textContainer.appendChild(consumedText)
-    textContainer.appendChild(slider)
+    textContainer.appendChild(checkBox)
     
     const image = document.createElement("img");
     image.src = item.imageSource;
@@ -152,7 +220,7 @@ let library = [
       ],
       "year": "2011",
       "imageSource": "http://books.google.com/books/content?id=t1MDOGpyW9gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-      "consumedStatus": false,
+      "consumedStatus": true,
       "review": 2
   },
   {
@@ -264,6 +332,34 @@ export {addToLibrary, renderLibrary, removeMedia, filterLibrary}
 
 
 
+
+
+// function createSlider(item){
+  
+//   const containerSlider = document.createElement("div");
+//   containerSlider.setAttribute("id", `slider${item.id}`);
+
+//   const labelSlider = document.createElement("label");
+//   labelSlider.classList.add("switch")
+
+//   const checkBox = document.createElement("input");
+//   checkBox.setAttribute("type", "checkbox")
+//   checkBox.setAttribute("id", `finished${item.id}`)
+//   checkBox.classList.add("checkbox");
+
+//   const spanSlider = document.createElement("span");
+//   spanSlider.classList.add("slider")
+//   spanSlider.classList.add("round")
+
+//   labelSlider.appendChild(checkBox)
+//   labelSlider.appendChild(spanSlider)
+
+//   containerSlider.appendChild(labelSlider)
+
+//   return containerSlider
+
+
+// }
 
 
 

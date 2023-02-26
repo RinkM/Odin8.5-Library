@@ -45,8 +45,8 @@ function closeSearchWindow(){
 
 
 function renderMediaDetails (libraryItem) {
-  const slider = document.getElementById("consumedSlider")
-  slider.classList.remove("hidden")
+  const checkBox = document.getElementById("consumedCheckbox")
+  checkBox.classList.remove("hidden")
   
   const container = document.getElementById("container--mediaDetails")
   container.classList.remove("hidden")
@@ -68,11 +68,19 @@ function renderMediaDetails (libraryItem) {
   }
   const addMediaBtn = document.createElement("button");
   addMediaBtn.setAttribute("id", "addMediaBtn")
+  addMediaBtn.setAttribute("class", "headerBtn")
   addMediaBtn.innerText = "Add"
 
   container.appendChild(addMediaBtn)
 
+  function getCheckValue (){
+    const checkboxDetails = document.getElementById("checkboxDetails")
+    console.log(checkboxDetails)
+    return checkboxDetails.checked
+  }
+
   addMediaBtn.addEventListener('click', () => {
+    libraryItem.consumedStatus = getCheckValue()
     addToLibrary(libraryItem);
     filterLibrary();
     closeSearchWindow();
@@ -95,7 +103,9 @@ function addButtons(){
     const button = document.createElement("button");
     button.setAttribute("id", `add${type}`);
     button.textContent = `Search ${type}s`;
-    button.classList.add("addButton");
+    button.classList.add("headerBtn");
+
+    
     const container = document.getElementById("container--buttons");
     container.appendChild(button);
 
@@ -277,8 +287,8 @@ function makeDelButton (){
   delCard.classList.add("hidden");
 
   const delButton = document.createElement("button")
-  delButton.classList.add("delButton")
-  delButton.textContent = "Delete!!!";
+  delButton.classList.add("headerBtn")
+  delButton.textContent = "REMOVE";
   delButton.addEventListener('click', trashButton)
   
   delCard.appendChild(delButton);

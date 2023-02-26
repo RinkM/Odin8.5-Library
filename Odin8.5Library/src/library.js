@@ -54,7 +54,7 @@ function createCheckBox(item){
   containerCheckBox.appendChild(labelCheckBox);
   containerCheckBox.appendChild(checkBox)
   checkBox.checked = item.consumedStatus
-  checkBox.addEventListener("input", ()=> finished(checkbox, item))
+  checkBox.addEventListener("input", ()=> finished(checkBox, item))
 
   
 
@@ -66,29 +66,14 @@ function createCheckBox(item){
 
 
 function finished (checkbox, item){
-  console.log(checkbox)
+  console.log(checkbox.checked)
   console.log(item)
-
-
-// the checkbox returns checked true each time.... don't knwo why.
-// the item  is the correct item... how to match them?
-
-
-// checkbox has a check value. true or false.
-// find the item in the library.
-
-
-
-// const id = divId.split("checkBox")[1]
-// const index = library.findIndex(media=> {
-//   return media.id == id
-// })
-
-// library[index].consumedStatus = checkbox.checked
-
-
-
-
+  // const id = divId.split("checkBox")[1]
+  const index = library.findIndex(media=> {
+    return media.id == item.id
+  })
+  library[index].consumedStatus = checkbox.checked
+  console.log(library)
 }
 
 
@@ -324,42 +309,6 @@ let library = [
 
 
 export {addToLibrary, renderLibrary, removeMedia, filterLibrary}
-
-
-
-
-
-
-
-
-
-
-// function createSlider(item){
-  
-//   const containerSlider = document.createElement("div");
-//   containerSlider.setAttribute("id", `slider${item.id}`);
-
-//   const labelSlider = document.createElement("label");
-//   labelSlider.classList.add("switch")
-
-//   const checkBox = document.createElement("input");
-//   checkBox.setAttribute("type", "checkbox")
-//   checkBox.setAttribute("id", `finished${item.id}`)
-//   checkBox.classList.add("checkbox");
-
-//   const spanSlider = document.createElement("span");
-//   spanSlider.classList.add("slider")
-//   spanSlider.classList.add("round")
-
-//   labelSlider.appendChild(checkBox)
-//   labelSlider.appendChild(spanSlider)
-
-//   containerSlider.appendChild(labelSlider)
-
-//   return containerSlider
-
-
-// }
 
 
 

@@ -11,9 +11,14 @@
   <body>
     <div id="app">
 
-      <header>
-        <button id = "headerAddBtn" class = "headerBtn">Add Media</button>
-        <button id = "headerEditBtn" class = "headerBtn">Remove Media</button>
+      <header id = "header">
+        <div id = "logoDiv">
+          <img id = "logo" src="/public/squirrel_stockUnlimited.jpg" alt="Squirrel Logo">
+        </div>
+
+        
+        <button id = "headerAddBtn" class = "headerBtn">Add to Stash</button>
+        <button id = "headerEditBtn" class = "headerBtn">Remove from Stash</button>
 
 
 
@@ -72,14 +77,15 @@
             <div id = "mediaDetails--image--container">
               <img id ="mediaDetails--image" src="#" alt="">
             </div>
-            
-            <div id = "consumedSlider" class = "hidden">Finished?
-              <label class="switch">
-                <input type="checkbox" class="checkbox" id="checkbox">
-                <span class="slider round"></span>
+
+
+
+            <div id = "consumedCheckbox" class = "hidden">
+              <label for = "checkbox" class="checkBoxLabel">Finished?
+                <input name = "checkbox" type="checkbox" class="checkbox" id="checkboxDetails">
               </label>
             </div>
-            <button id = "cancelMediaBtn">Cancel</button>
+            <button id = "cancelMediaBtn" class = "headerBtn">Cancel</button>
         </div>
       </div>
       <div id = "container--bottom">

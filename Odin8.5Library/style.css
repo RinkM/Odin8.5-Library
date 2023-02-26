@@ -15,6 +15,14 @@
   -webkit-text-size-adjust: 100%;
 }
 
+hr{
+  color: #e49442
+
+}
+
+body{
+  background-color: #051a39 ;
+}
 
 div{
   /* border: 1pt red solid */
@@ -43,6 +51,7 @@ h1 {
 }
 
 #app {
+  background-color: #051a39 ;
   max-width: 360px;
   margin: 0 auto;
   text-align: center;
@@ -52,26 +61,7 @@ h1 {
   padding: 2em;
 }
 
-button {
-  height: fit-content;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em .5em;
-  margin: 0px 3px;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -91,15 +81,17 @@ button:focus-visible {
 }
 
 #container--top{
+  color: #e49442 ;
+
   max-width: 360px;
   flex-direction: column;
-  border: solid 2px black;
+  border: solid 2px white;
   border-radius: 8px;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 3%);
-  z-index: 1;
-  background: white;
+  z-index: 2;
+  background-color: #051a39 ;
 
 }
 
@@ -139,10 +131,10 @@ button:focus-visible {
 }
 
 .searchResult:hover{
-  border: 1px solid blue;
+  border: 1px solid white;
   border-radius: 8px;
   margin: -1px;
-  background-color: aliceblue;
+  background-color: #092e64;
 }
 
 
@@ -187,6 +179,7 @@ button:focus-visible {
   /* height:200px;
   width: 200px; */
   position: relative;
+  z-index: 1;
 }
 
 .libraryItem:hover{
@@ -206,7 +199,7 @@ button:focus-visible {
 
 .libraryItemText{
   font-weight: 500;
-  font-size: 1.5em;
+  font-size: .9em;
   color:white;
   position: absolute;
   top: 50%;
@@ -234,9 +227,6 @@ button:focus-visible {
   min-height: 165px;
 }
 
-.headerBtn{
-  margin:2px;
-}
 
 .delCard {
   height:auto;
@@ -291,9 +281,11 @@ for computer 1366
   #app {
     max-width: 600px ;
   }
- 
+  .headerBtn{
+
+  }
   header{
-    background-color: blue;
+    /* background-color: blue; */
   }
 
 }
@@ -310,7 +302,7 @@ for computer 1366
     max-width: 800px;
   }
   header{
-    background-color: red;
+    /* background-color: red; */
   }
 
 }
@@ -322,7 +314,7 @@ for computer 1366
   }
 
   header{
-    background-color: black;
+    /* background-color: black; */
   }
 
 }
@@ -339,3 +331,88 @@ for computer 1366
   margin: 1em;
 
 }
+
+#header{
+  background-color: #051a39;
+  position: relative;
+  height: 50px;
+  display: flex;
+}
+
+#logo{
+  height: 50px;
+  /* position: absolute; */
+  left:0px
+}
+
+#logoDiv{
+  position: relative;
+}
+.headerBtn{
+  margin:2px;
+}
+
+
+
+.darkOrangeText{
+  color: #b45332;
+}
+
+
+.blueBackground{
+  background-color: #051a39 ;
+}
+
+
+
+
+#container--bottom{
+  background-color: #051a39 ;
+  font-size: 1.5em;
+  color: #e49442 ;
+
+}
+
+
+
+
+/* CSS */
+.headerBtn {
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: inline;
+  padding: 0.6em .5em;
+  /* font-size: .9em; */
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.headerBtn:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.headerBtn:active {
+  transform: scale(0.95);
+}
+
+
+
+
+
+
+
+

@@ -37,8 +37,7 @@ function createCheckBox(item){
     "for" : `checkBox${item.id}`,
     "class" : "checkBoxLabel"
   }
-  // <input type="checkbox" id="coding" name="interest" value="coding" checked />
-  // <label for="coding">Coding</label>
+  
   
   const containerCheckBox = document.createElement("div");
   const labelCheckBox = document.createElement("label");
@@ -78,27 +77,6 @@ function finished (checkbox, item){
 
 
 
-// const selection = evt.target.parentElement.parentElement.id;
-// console.log(selection)
-// removeMedia(selection)
-
-
-// function removeMedia (divId) {
-//   const id = divId.split("item")[1]
-//   const index = library.findIndex(media=> {
-//     return media.id == id
-//   })
-//   library.splice(index,1)
-//   filterLibrary()
-// }
-
-
-
-
-
-
-
-
 function filterLibrary (){
   console.log(library)
   const buttonTypes = ["Book", "Movie", "Game"];
@@ -133,12 +111,7 @@ function filterLibrary (){
 
 
 
-function renderLibrary(libraryContainer, library){
-  // console.log(libraryContainer)
-
-  // const libraryContainer = document.getElementById("container--library");
-
-  
+function renderLibrary(libraryContainer, library){  
   library.map((item) => {
 
     let finishedStatus;
@@ -308,7 +281,12 @@ let library = [
 
 
 
-export {addToLibrary, renderLibrary, removeMedia, filterLibrary}
+export {
+  addToLibrary, 
+  renderLibrary, 
+  removeMedia, 
+  filterLibrary
+}
 
 
 

@@ -378,7 +378,13 @@ for computer 1366
 
 /* CSS */
 .headerBtn {
-  margin: 10px;
+
+  max-width: 128px;
+  min-width: 80px;
+  height: 50px;
+  line-height: 1;
+  font-family: 'Shadows Into Light', cursive;
+  /* margin: 10px; */
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -386,12 +392,12 @@ for computer 1366
   color: white;
   border-radius: 10px;
   display: inline;
-  padding: 0.6em .5em;
-  /* font-size: .9em; */
+  /* padding: 0.6em 0.5em; */
+  font-size: 1.3em;
   border: 0px;
   font-weight: 700;
   box-shadow: 0px 0px 14px -7px #f09819;
-  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -411,8 +417,23 @@ for computer 1366
 
 
 
+#squirrelPixel{
+  width : 4px;
+  height : 4px;
+  cursor :pointer;
+  position : absolute;
+  color : #b45332;
+  top : 50%;
+  left : 50%;
+
+}
 
 
+.fontTilt{
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 30pt;
+  text-transform: uppercase;
+}
 
 
 

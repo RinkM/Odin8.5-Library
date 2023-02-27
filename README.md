@@ -31,7 +31,6 @@ Revision.
 
 # Feb 22
 the add button shows books AND games problem
-the delete doesn't work
 fix the consumed toggle
 nightmode issues
 remove the header colors. 

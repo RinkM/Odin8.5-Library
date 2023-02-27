@@ -1,5 +1,3 @@
-import { renderSearchResults } from "./domScript";
-
 const movieApi = "38e8b2e2ac2be3f92ce69d44aef52eef";
 
 async function movieSearch (searchTerm){
@@ -48,13 +46,6 @@ async function gameSearch (searchTerm){
   return fiveGameItems
 }
 
-// function fiveGameItems (results){
-//   let fiveItems = [] 
-//   results.map(game => {fiveItems.push(game)})
-//   console.log(fiveItems)
-//   return fiveItems
-// }
-
 // uses Jquery's Ajax instead of Fetch...
 function gameSearch2 (searchTerm){
     const giantBombApi = "8e5e059328164c0cc70ef6f32294a61fcf58fa1c";
@@ -67,12 +58,7 @@ function gameSearch2 (searchTerm){
       jsonp:"json_callback",
       
       success: function(results){
-        // ?this may be unneccesary because of the return call from earlier.
-        // // takes the full promise and simplifies it into an array of game items.
-        // let games = results.results.filter(item =>{item.api_detail_url.startsWith("https://www.giantbomb.com/api/game")});
-        // // sends 5 items through rendersearch results. 
-        // renderSearchResults(games.slice[0,5]);
-        // // ?renderSearchResults(results.results)
+        // Not needed because it returns the promise.
      },
       error: function(result){
         console.log("SearchGiantBomb Error", result);
@@ -81,40 +67,6 @@ function gameSearch2 (searchTerm){
   
   }
   
-
-  // ?unneccesary?
-  // function getBoxArt(url){
-  //   // const giantBombSearchUrl = `https://www.giantbomb.com/api/search/?api_key=${giantBombApi}&query=${searchTerm}&limit=5&format=jsonp&json_callback=json_callback`;
-  //   return Promise.resolve($.ajax({
-  //     url: url,
-  //     type: "GET",
-  //     dataType: "jsonp",
-  //     crossDomain:true,
-  //     jsonp:"json_callback",
-  //     success: function(results){
-  //       console.log("getBoxArt for", results.results[0].medium_url);
-  //         // results.results.map(item => console.log(item.image_tags))
-  //       return results.results
-  //    },
-  //     error: function(result){
-  //       console.log("getBoxArt Error", result);
-  //    },
-  //   }));
-  // }
-  
-// function boxArtUrlMaybe (){
-//   getBoxArt().then(
-//     (results) => {
-//       let games = results.results.filter((item) => item.resource_type == "game")
-//       renderSearchResults(games.slice(0,5));
-//     },
-//     (reason) =>{
-//       console.error(reason)
-//     },
-//   );
-// }
-  
-
 
 
 export { 

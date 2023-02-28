@@ -176,8 +176,6 @@ h1 {
   max-width: 250px;
   max-height: 200px;
   display:flex;
-  /* height:200px;
-  width: 200px; */
   position: relative;
   z-index: 1;
 }
@@ -186,8 +184,6 @@ h1 {
   transform: scale(1.1);
   transition: all .4s ease-out;
 }
-
-
 
 .libraryImage{
   max-width: 250px;
@@ -267,16 +263,6 @@ h1 {
 
 
 
-/* 
-app widths:
-for phone : 360
-horizontal : 640
-
-for tablet : 768
-for computer 1366
-
-
-*/
 @media only screen and (min-width:600px)  {
   #app {
     max-width: 600px ;
@@ -376,7 +362,6 @@ for computer 1366
 
 
 
-/* CSS */
 .headerBtn {
 
   max-width: 128px;

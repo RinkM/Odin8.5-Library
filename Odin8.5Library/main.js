@@ -1,29 +1,8 @@
-import './style.css'
-import {bookSearch, gameSearch, movieSearch, gameSearch2} from './src/apiScript';
-// import {movieSearch} from './src/movieApi';
+
+import {bookSearch, movieSearch, gameSearch2} from './src/apiScript';
 import {renderSearchResults, addButtons} from './src/domScript';
 import {filterLibrary} from './src/library';
-
-
-function myFunction () {
-  $.ajax({
-      url: testUrl,
-      type: "GET",
-      dataType: "jsonp",
-      crossDomain:true,
-      jsonp:"json_callback",
-      success: function(result){
-      console.log(result)
-  },
-  
-  error: function(result){
-  console.log("Error");
-  },
-  })
-  ;
-}
-
-
+import './style.css'
 filterLibrary()
 addButtons()
 const movieInput = document.getElementById("searchInput--movie");
